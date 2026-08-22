@@ -24,6 +24,13 @@
   --ft-glass-bg: rgba(255, 255, 255, 0.85);
   --ft-glass-border: rgba(10, 75, 140, 0.08);
 
+  /* Motion tokens */
+  --ft-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ft-ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ft-duration-fast: 200ms;
+  --ft-duration-base: 450ms;
+  --ft-duration-slow: 700ms;
+
   --breakpoint-sm: 540px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
@@ -87,5 +94,101 @@ html {
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn var(--ft-duration-slow) var(--ft-ease) both;
+}
+
+/* Keyframes adaptés de Magic UI (magicui.design) pour ShimmerButton / Marquee */
+@keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);
+  }
+}
+
+@keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+  }
+  15%,
+  35% {
+    transform: translateZ(0) rotate(90deg);
+  }
+  65%,
+  85% {
+    transform: translateZ(0) rotate(270deg);
+  }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+  }
+}
+
+.animate-shimmer-slide {
+  animation: shimmer-slide var(--speed) ease-in-out infinite alternate;
+}
+
+.animate-spin-around {
+  animation: spin-around calc(var(--speed) * 2) infinite linear;
+}
+
+/* Scroll-reveal system (driven by <Reveal>, IntersectionObserver-based) */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+  opacity: 0;
+  transition:
+    opacity var(--ft-duration-slow) var(--ft-ease),
+    transform var(--ft-duration-slow) var(--ft-ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal {
+  transform: translateY(28px);
+}
+
+.reveal-left {
+  transform: translateX(-32px);
+}
+
+.reveal-right {
+  transform: translateX(32px);
+}
+
+.reveal-scale {
+  transform: scale(0.94);
+}
+
+.reveal.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible,
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .animate-spin {
+    animation-duration: 1s !important;
+    animation-iteration-count: infinite !important;
+  }
 }

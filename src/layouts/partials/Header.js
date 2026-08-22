@@ -4,18 +4,30 @@ import Logo from "@components/Logo";
 import menu from "@config/menu.json";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import config from "../../config/config.json";
 
 const Header = () => {
   const pathname = usePathname();
   const { main } = menu;
   const [navOpen, setNavOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { logo } = config.site;
   const { enable, label, link } = config.nav_button;
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="header shadow-sm">
+    <header
+      className={`header shadow-sm transition-shadow duration-300 ${
+        scrolled ? "header-scrolled" : ""
+      }`}
+    >
       <nav className="navbar container">
         {/* logo */}
         <div className="order-0 flex items-center">
@@ -48,9 +60,9 @@ const Header = () => {
         {/* Menu */}
         <div
           id="nav-menu"
-          className={`order-3 w-full transition-all duration-300 md:order-1 md:w-auto ${
-            navOpen ? "mt-4 block opacity-100 md:mt-0" : "hidden md:block"
-          }`}
+          className={`order-3 w-full overflow-hidden transition-all duration-300 ease-out md:order-1 md:w-auto md:overflow-visible md:max-h-none md:opacity-100 ${
+            navOpen ? "mt-4 max-h-[32rem] opacity-100" : "max-h-0 opacity-0"
+          } md:mt-0`}
         >
           <ul className="navbar-nav block w-full items-center md:flex md:w-auto md:space-x-1 lg:space-x-2">
             {main.map((menu, i) => (

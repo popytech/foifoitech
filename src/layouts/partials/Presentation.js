@@ -1,4 +1,6 @@
 import Icon from "@layouts/components/Icon";
+import MagicCard from "@layouts/components/MagicCard";
+import Reveal from "@layouts/components/Reveal";
 import Link from "next/link";
 
 // Section « Une entreprise, trois domaines d'expertise » :
@@ -10,7 +12,7 @@ const Presentation = ({ presentation }) => {
   return (
     <section className="section py-16 lg:py-24">
       <div className="container">
-        <div className="mx-auto max-w-3xl text-center">
+        <Reveal className="mx-auto max-w-3xl text-center">
           <span className="ft-badge mb-3">Qui sommes-nous</span>
           <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
             {title}
@@ -23,29 +25,32 @@ const Presentation = ({ presentation }) => {
               {text}
             </p>
           ))}
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {poles.map((pole) => (
-            <Link
-              key={pole.title}
-              href={pole.link}
-              className="group relative flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7 shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/25 hover:shadow-2xl"
-            >
-              <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/25">
-                <Icon name={pole.icon} className="h-7 w-7" />
-              </span>
-              <h3 className="text-lg font-bold text-slate-900 transition-colors group-hover:text-primary">
-                {pole.title}
-              </h3>
-              <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">
-                {pole.content}
-              </p>
-              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-primary transition-all group-hover:gap-2.5">
-                En savoir plus
-                <Icon name="arrow" className="h-4 w-4" />
-              </span>
-            </Link>
+          {poles.map((pole, i) => (
+            <Reveal as="div" key={pole.title} delay={i * 100} direction="scale">
+              <MagicCard className="h-full rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl">
+                <Link
+                  href={pole.link}
+                  className="group relative flex h-full flex-col p-7"
+                >
+                  <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/25">
+                    <Icon name={pole.icon} className="h-7 w-7" />
+                  </span>
+                  <h3 className="text-lg font-bold text-slate-900 transition-colors group-hover:text-primary">
+                    {pole.title}
+                  </h3>
+                  <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">
+                    {pole.content}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-primary transition-all group-hover:gap-2.5">
+                    En savoir plus
+                    <Icon name="arrow" className="h-4 w-4" />
+                  </span>
+                </Link>
+              </MagicCard>
+            </Reveal>
           ))}
         </div>
 

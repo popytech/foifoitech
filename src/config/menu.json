@@ -17,6 +17,14 @@
         { "text": "Contact", "url": "/contact" },
         { "text": "Mentions légales", "url": "/mentions-legales" }
       ]
+    },
+    {
+      "name": "Nos domaines",
+      "menu": [
+        { "text": "Génie Civil & Immobilier", "url": "/services#pole-1" },
+        { "text": "Technologies & Informatique", "url": "/services#pole-2" },
+        { "text": "Logistique & Services", "url": "/services#pole-3" }
+      ]
     }
   ]
 }

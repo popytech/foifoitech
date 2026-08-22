@@ -8,7 +8,8 @@ const WhatsappButton = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contacter FÖFÖÏ TECH sur WhatsApp"
-      className="group fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full bg-[#25D366] p-3.5 text-white shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#25D366]/40"
+      className="animate-fade-in group fixed bottom-6 right-6 z-50 flex items-center gap-2.5 rounded-full bg-[#25D366] p-3.5 text-white shadow-xl transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-[#25D366]/40"
+      style={{ animationDelay: "900ms" }}
     >
       {/* Pulse effect */}
       <span className="absolute -inset-1 -z-10 rounded-full bg-[#25D366] opacity-75 animate-ping" />

@@ -1,4 +1,5 @@
 import Icon from "@layouts/components/Icon";
+import Reveal from "@layouts/components/Reveal";
 import Link from "next/link";
 
 const PHONE_DISPLAY = "(+224) 625 57 34 34";
@@ -9,10 +10,16 @@ function Cta({ cta }) {
   return (
     <section className="section py-16 lg:py-24">
       <div className="container">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-[#073463] to-primary p-8 shadow-2xl sm:p-12 lg:p-16">
+        <Reveal
+          direction="scale"
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-[#073463] to-primary p-8 shadow-2xl sm:p-12 lg:p-16"
+        >
           {/* Halos d'ambiance */}
-          <div className="pointer-events-none absolute -top-16 -right-16 h-72 w-72 rounded-full bg-[#00D2C8]/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-16 -left-16 h-72 w-72 rounded-full bg-amber-500/15 blur-3xl" />
+          <div className="animate-pulse-glow pointer-events-none absolute -top-16 -right-16 h-72 w-72 rounded-full bg-[#00D2C8]/20 blur-3xl" />
+          <div
+            className="animate-pulse-glow pointer-events-none absolute -bottom-16 -left-16 h-72 w-72 rounded-full bg-amber-500/15 blur-3xl"
+            style={{ animationDelay: "1.5s" }}
+          />
 
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <h2 className="text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">
@@ -55,7 +62,7 @@ function Cta({ cta }) {
               </a>
             </p>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

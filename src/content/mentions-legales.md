@@ -21,8 +21,7 @@ layout: default
 ## Contact
 
 - **Téléphone :** (+224) 625 57 34 34
-- **Email :** nicochristoine91@gmail.com
-- **Email :** fofoitech22@gmail.com
+- **Email :** contact@fofoitech.com
 
 ---
 

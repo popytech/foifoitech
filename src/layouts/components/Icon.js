@@ -54,6 +54,19 @@ const PATHS = {
       <path d="M3 13l9 5 9-5" />
     </>
   ),
+  compass: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M15 9l-2 6-6 2 2-6z" />
+    </>
+  ),
+  target: (
+    <>
+      <circle cx="12" cy="12" r="8.5" />
+      <circle cx="12" cy="12" r="4.5" />
+      <circle cx="12" cy="12" r="0.8" fill="currentColor" />
+    </>
+  ),
 
   // — Divers —
   phone: (

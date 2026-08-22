@@ -1,7 +1,9 @@
 import config from "@config/config.json";
 import { markdownify } from "@lib/utils/textConverter";
+import BorderBeam from "@layouts/components/BorderBeam";
 import ContactForm from "@layouts/components/ContactForm";
 import GoogleMap from "@layouts/components/GoogleMap";
+import Reveal from "@layouts/components/Reveal";
 
 const Contact = ({ data }) => {
   const { frontmatter } = data;
@@ -12,13 +14,21 @@ const Contact = ({ data }) => {
     <>
       {/* Top Banner Header */}
       <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white py-12 lg:py-16">
-        <div className="pointer-events-none absolute -top-20 left-1/2 -z-10 h-72 w-96 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+        <div className="animate-pulse-glow pointer-events-none absolute -top-20 left-1/2 -z-10 h-72 w-96 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
         <div className="container text-center">
-          <span className="ft-badge mb-3">Contact & Rendez-vous</span>
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <span className="animate-fade-in ft-badge mb-3" style={{ animationDelay: "0ms" }}>
+            Contact & Rendez-vous
+          </span>
+          <h1
+            className="animate-fade-in text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+            style={{ animationDelay: "90ms" }}
+          >
             {title}
           </h1>
-          <p className="mt-3 text-base text-slate-600 sm:text-lg max-w-xl mx-auto">
+          <p
+            className="animate-fade-in mt-3 text-base text-slate-600 sm:text-lg max-w-xl mx-auto"
+            style={{ animationDelay: "180ms" }}
+          >
             Besoin d'un devis BTP, d'un dépannage informatique ou d'un service logistique ? Contactez notre équipe à Coyah.
           </p>
         </div>
@@ -28,11 +38,16 @@ const Contact = ({ data }) => {
       <section className="section py-12 lg:py-16">
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-12 items-start">
-            <div className="lg:col-span-7">
+            <Reveal
+              as="div"
+              direction="left"
+              className="relative overflow-hidden rounded-2xl lg:col-span-7"
+            >
               <ContactForm action={contact_form_action} />
-            </div>
+              <BorderBeam size={140} duration={6} borderWidth={2} />
+            </Reveal>
 
-            <div className="lg:col-span-5 space-y-6">
+            <Reveal as="div" direction="right" delay={120} className="lg:col-span-5 space-y-6">
               {/* Info Card */}
               <div className="rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-xl">
                 <h3 className="text-xl font-bold text-slate-900">
@@ -65,7 +80,7 @@ const Contact = ({ data }) => {
               <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xl">
                 <GoogleMap />
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>

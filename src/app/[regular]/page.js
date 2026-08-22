@@ -1,5 +1,6 @@
 import config from "@config/config.json";
 import NotFound from "@layouts/404";
+import APropos from "@layouts/APropos";
 import Contact from "@layouts/Contact";
 import Default from "@layouts/Default";
 import Equipe from "@layouts/Equipe";
@@ -21,6 +22,8 @@ const RegularPages = async ({ params }) => {
     <Equipe data={regularPageData} />
   ) : layout === "services" ? (
     <ServicesPage data={regularPageData} />
+  ) : layout === "apropos" ? (
+    <APropos data={regularPageData} />
   ) : (
     <Default data={regularPageData} />
   );

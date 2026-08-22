@@ -1,4 +1,5 @@
 import Icon from "@layouts/components/Icon";
+import Reveal from "@layouts/components/Reveal";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,7 +18,9 @@ const Services = ({ services }) => {
         <div className="container">
           <div className="items-center gap-12 md:grid md:grid-cols-2 lg:gap-16">
             {/* Visuel */}
-            <div
+            <Reveal
+              as="div"
+              direction={isOdd ? "right" : "left"}
               className={`group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-2 shadow-xl transition-all duration-300 hover:shadow-2xl ${
                 !isOdd && "md:order-2"
               }`}
@@ -30,10 +33,15 @@ const Services = ({ services }) => {
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="h-[320px] w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[400px]"
               />
-            </div>
+            </Reveal>
 
             {/* Contenu */}
-            <div className={`mt-8 md:mt-0 ${!isOdd && "md:order-1"}`}>
+            <Reveal
+              as="div"
+              direction={isOdd ? "left" : "right"}
+              delay={120}
+              className={`mt-8 md:mt-0 ${!isOdd && "md:order-1"}`}
+            >
               <div className="mb-4 inline-flex items-center gap-2.5 rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
                 {service.icon && <Icon name={service.icon} className="h-4 w-4" />}
                 Domaine n°{index + 1}
@@ -75,7 +83,7 @@ const Services = ({ services }) => {
                   </Link>
                 </div>
               )}
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>

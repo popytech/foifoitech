@@ -1,4 +1,5 @@
 import Icon from "@layouts/components/Icon";
+import Reveal from "@layouts/components/Reveal";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,14 +10,22 @@ const ServicesPage = ({ data }) => {
     <>
       {/* En-tête de page */}
       <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white py-12 lg:py-16">
-        <div className="pointer-events-none absolute -top-20 left-1/2 -z-10 h-72 w-96 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+        <div className="animate-pulse-glow pointer-events-none absolute -top-20 left-1/2 -z-10 h-72 w-96 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
         <div className="container text-center">
-          <span className="ft-badge mb-3">Nos domaines d'intervention</span>
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <span className="animate-fade-in ft-badge mb-3" style={{ animationDelay: "0ms" }}>
+            Nos domaines d'intervention
+          </span>
+          <h1
+            className="animate-fade-in text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+            style={{ animationDelay: "90ms" }}
+          >
             {title}
           </h1>
           {intro && (
-            <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 sm:text-lg">
+            <p
+              className="animate-fade-in mx-auto mt-4 max-w-2xl text-base text-slate-600 sm:text-lg"
+              style={{ animationDelay: "180ms" }}
+            >
               {intro}
             </p>
           )}
@@ -27,18 +36,19 @@ const ServicesPage = ({ data }) => {
       <section className="container -mt-2 pb-4">
         <div className="grid gap-4 sm:grid-cols-3">
           {poles.map((pole, i) => (
-            <a
-              key={pole.title}
-              href={`#pole-${i + 1}`}
-              className="group flex items-center gap-3 rounded-xl border border-slate-200/80 bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg"
-            >
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                <Icon name={pole.icon} className="h-6 w-6" />
-              </span>
-              <span className="text-sm leading-snug font-bold text-slate-900">
-                {pole.title}
-              </span>
-            </a>
+            <Reveal as="div" key={pole.title} delay={i * 90} direction="scale">
+              <a
+                href={`#pole-${i + 1}`}
+                className="group flex items-center gap-3 rounded-xl border border-slate-200/80 bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg"
+              >
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                  <Icon name={pole.icon} className="h-6 w-6" />
+                </span>
+                <span className="text-sm leading-snug font-bold text-slate-900">
+                  {pole.title}
+                </span>
+              </a>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -55,7 +65,9 @@ const ServicesPage = ({ data }) => {
           <div className="container">
             <div className="items-center gap-10 md:grid md:grid-cols-2 lg:gap-16">
               {/* Visuel */}
-              <div
+              <Reveal
+                as="div"
+                direction={i % 2 === 0 ? "left" : "right"}
                 className={`group overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-2 shadow-xl ${
                   i % 2 === 0 ? "" : "md:order-2"
                 }`}
@@ -68,10 +80,13 @@ const ServicesPage = ({ data }) => {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="h-[280px] w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[380px]"
                 />
-              </div>
+              </Reveal>
 
               {/* Détail des prestations */}
-              <div
+              <Reveal
+                as="div"
+                direction={i % 2 === 0 ? "right" : "left"}
+                delay={120}
                 className={`mt-8 md:mt-0 ${i % 2 === 0 ? "" : "md:order-1"}`}
               >
                 <div className="mb-4 inline-flex items-center gap-2.5 rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
@@ -120,7 +135,7 @@ const ServicesPage = ({ data }) => {
                     <Icon name="arrow" className="h-5 w-5" />
                   </Link>
                 )}
-              </div>
+              </Reveal>
             </div>
           </div>
         </section>
@@ -130,7 +145,10 @@ const ServicesPage = ({ data }) => {
       {closing && (
         <section className="section py-14 lg:py-20">
           <div className="container">
-            <div className="rounded-2xl border border-slate-200/80 bg-gradient-to-br from-slate-50 to-blue-50/50 p-8 text-center shadow-lg sm:p-12">
+            <Reveal
+              direction="scale"
+              className="rounded-2xl border border-slate-200/80 bg-gradient-to-br from-slate-50 to-blue-50/50 p-8 text-center shadow-lg sm:p-12"
+            >
               <h2 className="text-xl font-bold text-slate-900 sm:text-2xl">
                 {closing.title}
               </h2>
@@ -144,7 +162,7 @@ const ServicesPage = ({ data }) => {
                 <span>{closing.button}</span>
                 <Icon name="arrow" className="h-5 w-5" />
               </Link>
-            </div>
+            </Reveal>
           </div>
         </section>
       )}

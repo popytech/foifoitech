@@ -9,7 +9,6 @@ info:
   contacts:
     - "**Adresse :** Somaya-Fory, Commune de Coyah, Conakry — République de Guinée"
     - "**Téléphone :** [(+224) 625 57 34 34](tel:+224625573434)"
-    - "**Email :** [nicochristoine91@gmail.com](mailto:nicochristoine91@gmail.com)"
-    - "**Email :** [fofoitech22@gmail.com](mailto:fofoitech22@gmail.com)"
+    - "**Email :** [contact@fofoitech.com](mailto:contact@fofoitech.com)"
     - "**WhatsApp :** [Discuter sur WhatsApp](https://wa.me/224625573434)"
 ---
