@@ -1,14 +1,13 @@
 {
-  "name": "bigspring-light-nextjs",
-  "description": "A nextjs and tailwindcss SAAS starter template",
-  "version": "3.1.0",
+  "name": "fofoitech-site",
+  "description": "Site vitrine institutionnel FÖFÖÏ TECH SARLU — BTP, informatique et services techniques (Coyah, Conakry)",
+  "version": "1.0.0",
   "private": true,
-  "license": "MIT",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "concurrently \"node scripts/themeGenerator.mjs --watch\" \"next dev\"",
     "build": "node scripts/themeGenerator.mjs && next build",
-    "export": "next build && next export",
-    "lint": "next lint",
+    "lint": "eslint src",
     "start": "next start",
     "preview": "next start"
   },
@@ -27,8 +26,7 @@
     "react-lite-youtube-embed": "^3.6.0",
     "rehype-highlight": "^7.0.2",
     "rehype-slug": "^6.0.0",
-    "remark-gfm": "^4.0.1",
-    "swiper": "^14.0.0"
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.11",

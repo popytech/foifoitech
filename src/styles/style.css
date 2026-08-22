@@ -1,14 +1,9 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/forms";
-@plugin "@tailwindcss/typography";
-@plugin "tailwind-bootstrap-grid" {
-  generate_container: false;
-}
+@config "../../tailwind.config.cjs";
 
 @import "./generated-theme.css";
 
 @import "./base.css" layer(base);
-
 @import "./components.css" layer(components);
 @import "./navigation.css" layer(components);
 @import "./buttons.css" layer(components);
@@ -16,11 +11,81 @@
 @import "./utilities.css";
 @import "./safe.css";
 
-@theme {
-  --shadow: 0 12px 24px -6px rgba(45, 67, 121, 0.1);
+/* Design Tokens & Animations */
+:root {
+  --ft-primary: var(--color-primary);
+  --ft-primary-light: #155FA0;
+  --ft-primary-dark: #073463;
+  --ft-accent: #00D2C8;
+  --ft-accent-gold: #F59E0B;
+  --ft-bg-soft: #F8FAFC;
+  --ft-card-shadow: 0 10px 30px -10px rgba(10, 75, 140, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --ft-card-shadow-hover: 0 20px 40px -15px rgba(10, 75, 140, 0.18), 0 8px 12px -4px rgba(0, 0, 0, 0.06);
+  --ft-glass-bg: rgba(255, 255, 255, 0.85);
+  --ft-glass-border: rgba(10, 75, 140, 0.08);
+
   --breakpoint-sm: 540px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+@layer components {
+  /* Brand utilities */
+  .ft-primary { color: var(--ft-primary); }
+  .ft-bg-primary { background-color: var(--ft-primary); }
+  .ft-cta { background-color: var(--ft-primary); color: #fff; padding: 0.75rem 1.5rem; border-radius: 0.5rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .ft-cta:hover { background-color: var(--ft-primary-light); transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(10, 75, 140, 0.4); }
+  .ft-badge { display: inline-flex; align-items: center; background: rgba(10, 75, 140, 0.08); color: var(--ft-primary); padding: 0.35rem 0.85rem; border-radius: 9999px; font-weight: 600; font-size: 0.85rem; border: 1px solid rgba(10, 75, 140, 0.12); }
+  .contact-form .form-input, .contact-form .form-textarea, .contact-form .form-select { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; border-radius: 0.5rem; transition: all 0.2s ease; }
+  .contact-form .form-input:focus, .contact-form .form-textarea:focus, .contact-form .form-select:focus { border-color: var(--ft-primary); box-shadow: 0 0 0 3px rgba(10, 75, 140, 0.12); outline: none; }
+  .footer-legal { font-size: 0.9rem; color: #64748b; }
+}
+
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

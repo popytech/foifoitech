@@ -1,130 +1,165 @@
-<h1 align=center>Bigspring Light Nextjs</h1> 
-<p align=center>Bigspring is a web development business template built in Nextjs. Perfect for Creative Agency, Marketing Agency, Design Studios, Digital Marketing Agencies, and other business service websites.</p>
-<h2 align="center"> <a target="_blank" href="https://bigspring-light-nextjs.vercel.app/" rel="nofollow">👀Demo</a> | <a  target="_blank" href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fbigspring-light-nextjs.vercel.app%2F&form_factor=desktop">Page Speed (100%)🚀</a>
-</h2>
+# Site web FÖFÖÏ TECH
 
-<p align=center>
-  <a href="https://github.com/vercel/next.js/releases/tag/v16.2.9" alt="Contributors">
-    <img src="https://img.shields.io/static/v1?label=NEXTJS&message=16.2&color=000&logo=nextjs" />
-  </a>
+Site vitrine institutionnel de **FÖFÖÏ TECH SARLU** — BTP, informatique et
+services techniques, Somaya-Fory, Commune de Coyah, Conakry (Guinée).
 
-  <a href="https://github.com/themefisher/bigspring-light-nextjs/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/themefisher/bigspring-light-nextjs" alt="license"></a>
+> Réalisé par **POPY TECH** — base technique : template Bigspring Light (Next.js),
+> intégralement adapté au contenu et à l'identité FÖFÖÏ TECH.
 
-  <img src="https://img.shields.io/github/languages/code-size/themefisher/bigspring-light-nextjs" alt="code size">
+---
 
-  <a href="https://github.com/themefisher/bigspring-light-nextjs/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/themefisher/bigspring-light-nextjs" alt="contributors"></a>
-</p>
+## Stack
 
-![bigspring-light](https://assets.teamosis.com/thumbs/bigspring-light.png)
+| Élément | Choix |
+|---|---|
+| Framework | Next.js 16 (App Router, Turbopack) |
+| Styles | Tailwind CSS 4 |
+| Contenu | Markdown (`src/content/`) + front-matter |
+| Emails | API REST Resend (appel `fetch`, sans dépendance npm) |
+| Gestionnaire de paquets | pnpm |
 
-## 🔑Key Features
+---
 
-- 📄 9+ Pre-Designed Pages
-- ✨ Simple and Minimal
-- 📱 Fully Responsive
-- 🚀 Google Page Speed score 100! (Desktop)
-- 📊 Google Analytics support
-- 🗂️ Caching enabled
-- ✉️ Supports Contact Form
-- 🌍 SEO Friendly
+## Démarrage
 
-## 📄 9+ Pre-Designed Pages
-
-- 🏠 Home Page
-- 📚 Blog Page
-- 📝 Blog Single Page
-- 📞 Contact Page
-- 📄 Features Page
-- ❓ FAQ Page
-- 💰 Pricing Page
-- 🔒 Privacy Policy Page
-- 🔒 Terms and Condition Page
-
-<!-- installation -->
-
-## ⚙️Installation
-
-After downloading the template, you have some prerequisites to install. Then you can run it on your localhost. You can view the package.json file to see which scripts are included.
-
-### 🔧Install prerequisites (once for a machine)
-
-- **Node Installation:** [Install node js](https://nodejs.org/en/download/) [Recommended LTS version]
-
-### 🖥️Local setup
-
-After successfully installing those dependencies, open this template with any IDE [[VS Code](https://code.visualstudio.com/) recommended], and then open the internal terminal of IDM [vs code shortcut <code>ctrl/cmd+\`</code>]
-
-- Install dependencies
-
-```
-npm install
+```bash
+pnpm install
+cp .env.example .env.local   # puis renseigner les variables
+pnpm dev                     # http://localhost:3000
 ```
 
-- Run locally
+Autres commandes :
 
-```
-npm run dev
-```
-
-After that, it will open up a preview of the template in your default browser, watch for changes to source files, and live-reload the browser when changes are saved.
-
-## 🔨Production Build
-
-After finishing all the customization, you can create a production build by running this command.
-
-```
-npm run build
+```bash
+pnpm build     # build de production (génère le thème puis compile)
+pnpm start     # sert le build de production
+pnpm lint      # ESLint
 ```
 
-<!-- edit with sitepins -->
+---
 
-## 📝 Edit Content with CMS
+## Variables d'environnement
 
-This template comes pre-configured with [**Sitepins**](https://sitepins.com/?aff=tfgithub), a Git-based Headless CMS designed for seamless content management. You can update your website’s text, images, and configuration without touching a single line of code.
+Toutes décrites dans [`.env.example`](.env.example). En production, **deux sont
+indispensables** :
 
-**How to get started:**
+| Variable | Rôle | Si absente |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | URL publique (canonical, og:url, sitemap) | URLs SEO en `localhost` |
+| `RESEND_API_KEY` | Envoi des demandes du formulaire | Le formulaire renvoie une erreur au visiteur |
+| `CONTACT_FROM_EMAIL` | Expéditeur (domaine vérifié Resend) | Repli sur `onboarding@resend.dev` |
+| `CONTACT_TO_EMAILS` | Destinataires | Repli sur les deux emails FÖFÖÏ TECH |
 
-Click the Edit with Sitepins button below and follow the on-screen instructions to start editing your content visually.
+### Configurer Resend
 
-  <a target="_blank" href="https://app.sitepins.com/new/clone?name=Bigspring%20Light%20Nextjs&repository=https://github.com/themefisher/bigspring-light-nextjs/?aff=tfgithub">
-    <img src="https://sitepins.com/button.svg" alt="Edit with Sitepins">
-  </a>
-  
-<!-- reporting issue -->
+1. Créer un compte sur [resend.com](https://resend.com).
+2. **Domains → Add Domain** : ajouter le domaine du site et publier les
+   enregistrements DNS (SPF, DKIM) fournis par Resend.
+3. **API Keys → Create** : copier la clé dans `RESEND_API_KEY`.
+4. Définir `CONTACT_FROM_EMAIL` sur une adresse **de ce domaine vérifié**.
 
-## 🐞Reporting Issues
+Sans domaine vérifié, l'expéditeur de test `onboarding@resend.dev` fonctionne
+mais n'envoie qu'à l'adresse du titulaire du compte Resend — suffisant pour une
+recette, pas pour la production.
 
-We use GitHub Issues as the official bug tracker for this Template. Please Search [existing issues](https://github.com/themefisher/bigspring-light-nextjs/issues). It’s possible someone has already reported the same problem.
-If your problem or idea has not been addressed yet, feel free to [open a new issue](https://github.com/themefisher/bigspring-light-nextjs/issues).
+---
 
-<!-- support -->
+## Structure
 
-## ✉️Technical Support or Questions (Paid)
+```
+src/
+├── app/                  routes App Router
+│   ├── page.js           accueil
+│   ├── [regular]/        pages de contenu (à propos, services, équipe, contact, mentions légales)
+│   ├── api/contact/      réception du formulaire
+│   ├── sitemap.js        sitemap.xml
+│   └── robots.js         robots.txt
+├── content/              contenu éditable en Markdown
+├── config/               config.json, menu.json, social.json, theme.json
+├── layouts/              gabarits de page et composants
+└── lib/                  parsing du contenu, envoi email, utilitaires
+```
 
-If you have questions or need help integrating the product please [contact us](https://themefisher.com/contact) instead of opening an issue.
+### Modifier le contenu
 
-<!-- licence -->
+Les textes vivent dans `src/content/` — aucune intervention dans le code n'est
+nécessaire. Une page = un fichier `.md`. Le `layout:` du front-matter choisit le
+gabarit (`default`, `contact`, `equipe`).
 
-## 📄License
+Ajouter une page : créer le `.md`, puis ajouter l'entrée dans
+`src/config/menu.json`. La route et le sitemap se génèrent automatiquement.
 
-Copyright (c) 2016 - Present, Designed & Developed by [Themefisher](https://themefisher.com)
+### Modifier la charte graphique
 
-**Code License:** Released under the [MIT](https://github.com/themefisher/bigspring-light-nextjs/blob/main/LICENSE) license.
+Le bleu institutionnel est défini **à un seul endroit** :
+`src/config/theme.json` → `theme_color.primary` (actuellement `#0A4B8C`).
+Le script `scripts/themeGenerator.mjs` propage la valeur dans le CSS au build.
 
-**Image license:** The images are only for demonstration purposes. They have their license, we don't have permission to share those images.
+---
 
-## 👨‍💻Hire Us
+## Conformité au cahier des charges
 
-Besides developing unique, blazing-fast Nextjs templates, we also provide customized services. We specialize in creating affordable, high-quality static websites based on Nextjs.
+| Exigence CDC | État |
+|---|---|
+| 5 pages (Accueil, À propos, Services, Contact, Mentions légales) | ✅ + page Équipe dédiée |
+| RCCM en pied de page sur toutes les pages | ✅ |
+| NIF en mentions légales | ✅ |
+| Formulaire de contact fonctionnel | ✅ (validation, anti-spam, limitation de débit) |
+| Bouton WhatsApp flottant | ✅ toutes pages → `wa.me/224625573434` |
+| Carte Google Maps | ✅ embed sans clé API + lien itinéraire |
+| Responsive mobile / tablette / desktop | ✅ |
+| SEO (metas, H1/H2, sitemap.xml, favicon) | ✅ |
+| Optimisation images / lazy loading | ✅ via `next/image` |
+| Aucun contenu résiduel du template | ✅ purge complète |
 
-If you need to customize the theme or complete website development from scratch, you can hire us. **Check Our
-[Contact Page](https://themefisher.com/contact)**
+---
 
-## 👉Nextjs Templates By Us
+## Déploiement
 
-<a href="https://themefisher.com/products/bookworm-light-nextjs">
-<img src="https://demo.gethugothemes.com/thumbnails/bookworm.png" height="300" width="400"/>
-<p>Bookworm Light Nextjs</p>
-</a>
+### Vercel (recommandé)
+
+1. Importer le dépôt sur [vercel.com](https://vercel.com).
+2. Renseigner les variables d'environnement (**Settings → Environment Variables**).
+3. Déployer — build et commande de démarrage sont détectés automatiquement.
+4. Brancher le nom de domaine dans **Settings → Domains**.
+
+### Netlify
+
+Le fichier `netlify.toml` est présent. Ajouter le plugin
+`@netlify/plugin-nextjs` et les mêmes variables d'environnement.
+
+### Après mise en ligne
+
+- [ ] Renseigner l'hébergeur retenu dans `src/content/mentions-legales.md`
+      (section « Hébergement du site », actuellement à compléter).
+- [ ] Vérifier que `NEXT_PUBLIC_SITE_URL` pointe le domaine final, puis
+      contrôler `/sitemap.xml` et `/robots.txt`.
+- [ ] Soumettre le sitemap dans Google Search Console.
+- [ ] Envoyer une demande test via le formulaire et confirmer la réception sur
+      les deux adresses.
+- [ ] Vérifier que le +224 625 57 34 34 est bien actif sur WhatsApp Business.
+
+---
+
+## En attente du client
+
+Éléments non fournis à ce jour, à intégrer avant la livraison finale :
+
+- Photos de l'équipe (5 portraits) — des avatars à initiales sont affichés en
+  attendant. Déposer les fichiers dans `public/images/` puis renseigner `img:`
+  pour chaque membre dans `src/content/equipe.md`.
+- Logo haute résolution (`public/images/logo.png` est provisoire).
+- Validation des textes « Vision & Mission » et « Mot du Directeur Général ».
+- Visuels de réalisations BTP, le cas échéant.
+- Comptes de réseaux sociaux — à renseigner dans `src/config/social.json`
+  (les champs vides ne s'affichent pas).
+
+---
+
+## Contacts projet
+
+| Rôle | Contact |
+|---|---|
+| Agence — POPY TECH | Popy Traoré — +224 612 960 453 — popytech76@gmail.com |
+| Client — Directeur Général | Nicolas KOUNDOUNO — FÖFÖÏ TECH |
+| Emails opérationnels client | nicochristoine91@gmail.com · fofoitech22@gmail.com |

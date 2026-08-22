@@ -53,9 +53,6 @@ importers:
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
-      swiper:
-        specifier: ^14.0.0
-        version: 14.0.0
     devDependencies:
       '@tailwindcss/forms':
         specifier: ^0.5.11
@@ -2583,10 +2580,6 @@ packages:
   supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
-
-  swiper@14.0.0:
-    resolution: {integrity: sha512-F6DXjC+GKt8WGvutu+35FIZO9iZkde+XxDwFqfw0tlFijDwfG7DikHYUiFQKqIYEp25q8TQSqI3Nh2+bHxs2uA==}
-    engines: {node: '>= 4.7.0'}
 
   tailwind-bootstrap-grid@7.0.0:
     resolution: {integrity: sha512-IOpWRzwyRcU28S4h0BuCGqnLy9L6zfVgagdsGgEgrZstxUu9YmQLPyulwx1EOP8u+FY6vcRvkSRNRC8kFeGd3w==}
@@ -5736,8 +5729,6 @@ snapshots:
   supports-color@10.2.2: {}
 
   supports-preserve-symlinks-flag@1.0.0: {}
-
-  swiper@14.0.0: {}
 
   tailwind-bootstrap-grid@7.0.0(tailwindcss@4.3.1):
     dependencies:

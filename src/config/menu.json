@@ -1,72 +1,21 @@
 {
   "main": [
-    {
-      "name": "Home",
-      "url": "/"
-    },
-    {
-      "name": "Blog",
-      "url": "/blogs"
-    },
-    {
-      "name": "Pricing",
-      "url": "/pricing"
-    },
-    {
-      "name": "Contact",
-      "url": "/contact"
-    },
-    {
-      "name": "FAQ",
-      "url": "/faq"
-    }
+    { "name": "Accueil", "url": "/" },
+    { "name": "À propos", "url": "/a-propos" },
+    { "name": "Nos Services", "url": "/services" },
+    { "name": "Équipe", "url": "/equipe" },
+    { "name": "Contact", "url": "/contact" }
   ],
   "footer": [
     {
-      "name": "Company",
+      "name": "Liens rapides",
       "menu": [
-        {
-          "text": "Pricing",
-          "url": "/pricing"
-        },
-        {
-          "text": "Quick Start",
-          "url": "#"
-        }
-      ]
-    },
-    {
-      "name": "Product",
-      "menu": [
-        {
-          "text": "Features",
-          "url": "#"
-        },
-        {
-          "text": "Platform",
-          "url": "#"
-        },
-        {
-          "text": "Pricing",
-          "url": "/pricing"
-        }
-      ]
-    },
-    {
-      "name": "Support",
-      "menu": [
-        {
-          "text": "FAQ",
-          "url": "/faq"
-        },
-        {
-          "text": "Privacy Policy",
-          "url": "#"
-        },
-        {
-          "text": "Terms & Conditions",
-          "url": "#"
-        }
+        { "text": "Accueil", "url": "/" },
+        { "text": "À propos", "url": "/a-propos" },
+        { "text": "Nos Services", "url": "/services" },
+        { "text": "Équipe", "url": "/equipe" },
+        { "text": "Contact", "url": "/contact" },
+        { "text": "Mentions légales", "url": "/mentions-legales" }
       ]
     }
   ]

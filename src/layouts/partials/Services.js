@@ -1,65 +1,79 @@
-"use client";
-
+import Icon from "@layouts/components/Icon";
 import Image from "next/image";
 import Link from "next/link";
-import "swiper/css/bundle";
-import { Autoplay, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 
+// Composant serveur : aucun JavaScript envoyé au navigateur.
 const Services = ({ services }) => {
   return services.map((service, index) => {
     const isOdd = index % 2 > 0;
+
     return (
       <section
         key={`service-${index}`}
-        className={`section ${isOdd && "bg-light"}`}
+        className={`section relative py-16 lg:py-24 ${
+          isOdd ? "bg-slate-50/80" : "bg-white"
+        }`}
       >
         <div className="container">
-          <div className="items-center gap-8 md:grid md:grid-cols-2">
-            {/* Carousel */}
-            <div className={`service-carousel ${!isOdd && "md:order-2"}`}>
-              <Swiper
-                modules={[Autoplay, Pagination]}
-                pagination={
-                  service.images.length > 1 ? { clickable: true } : false
-                }
-                autoplay={{
-                  delay: 5000,
-                  disableOnInteraction: false,
-                }}
-                init={service?.images > 1 ? false : true}
-              >
-                {/* Slides */}
-                {service?.images.map((slide, index) => (
-                  <SwiperSlide key={index}>
-                    <Image src={slide} alt="" width={600} height={500} />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-
-            {/* Content */}
+          <div className="items-center gap-12 md:grid md:grid-cols-2 lg:gap-16">
+            {/* Visuel */}
             <div
-              className={`service-content mt-5 md:mt-0 ${
-                !isOdd && "md:order-1"
+              className={`group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-2 shadow-xl transition-all duration-300 hover:shadow-2xl ${
+                !isOdd && "md:order-2"
               }`}
             >
-              <h2 className="font-bold leading-[40px]">{service?.title}</h2>
-              <p className="mb-2 mt-4">{service?.content}</p>
+              <Image
+                src={service.images[0]}
+                alt={service.image_alt || service.title}
+                width={650}
+                height={480}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="h-[320px] w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[400px]"
+              />
+            </div>
+
+            {/* Contenu */}
+            <div className={`mt-8 md:mt-0 ${!isOdd && "md:order-1"}`}>
+              <div className="mb-4 inline-flex items-center gap-2.5 rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
+                {service.icon && <Icon name={service.icon} className="h-4 w-4" />}
+                Domaine n°{index + 1}
+              </div>
+
+              <h2 className="text-2xl leading-tight font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+                {service.title}
+              </h2>
+
+              <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+                {service.content}
+              </p>
+
+              {service.highlights?.length > 0 && (
+                <ul className="mt-6 space-y-2.5">
+                  {service.highlights.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2.5 text-sm text-slate-700 sm:text-base"
+                    >
+                      <Icon
+                        name="shield"
+                        className="mt-0.5 h-5 w-5 shrink-0 text-primary"
+                      />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
               {service.button.enable && (
-                <Link
-                  href={service?.button.link}
-                  className="cta-link inline-flex items-center text-primary"
-                >
-                  {service?.button.label}
-                  <Image
-                    className="ml-1"
-                    src="/images/arrow-right.svg"
-                    width={18}
-                    height={14}
-                    alt="arrow"
-                  />
-                </Link>
+                <div className="mt-7">
+                  <Link
+                    href={service.button.link}
+                    className="inline-flex items-center gap-2 text-base font-bold text-primary transition-all hover:gap-3"
+                  >
+                    <span>{service.button.label}</span>
+                    <Icon name="arrow" className="h-5 w-5" />
+                  </Link>
+                </div>
               )}
             </div>
           </div>

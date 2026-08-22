@@ -1,92 +1,108 @@
 ---
 banner:
-  title: Let us solve your critical website development challenges
-  content: Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam nihil enim maxime corporis cumque <br/> totam aliquid nam sint inventore optio modi neque laborum officiis necessitatibus.
-  image: /images/banner-art.svg
+  title: "Un service, mille possibilités"
+  content: "FÖFÖÏ TECH accompagne particuliers et entreprises en Guinée avec des solutions fiables en BTP, informatique et services techniques — un seul interlocuteur, plusieurs domaines d'expertise."
+  image: /images/hero-fofoitech.jpg
+  image_alt: "Équipe FÖFÖÏ TECH en intervention à Coyah, Conakry"
   button:
-    label: "Contact Us"
+    enable: true
+    label: "Demander un devis"
     link: "/contact"
+    rel: ""
+
+# présentation rapide
+presentation:
+  title: "Une entreprise, trois domaines d'expertise"
+  paragraphs:
+    - "FÖFÖÏ TECH est une entreprise guinéenne basée à Coyah, opérant sous le régime OHADA. Nous réunissons sous un même toit des compétences en construction, en ingénierie, en informatique et en services techniques, pour répondre aux besoins concrets des particuliers, des entreprises et des institutions en Guinée."
+    - "Que vous ayez un projet de construction, un besoin en équipement informatique, ou une prestation de services à confier, FÖFÖÏ TECH vous apporte une réponse rapide, sérieuse et conforme aux normes en vigueur."
+  poles:
+    - title: "Génie Civil & Immobilier"
+      icon: btp
+      link: "/services#pole-1"
+      content: "Construction, vente et aménagement de terrains, lotissement — nous accompagnons vos projets immobiliers du terrain jusqu'à la réalisation."
+    - title: "Technologies & Informatique"
+      icon: informatique
+      link: "/services#pole-2"
+      content: "Vente de matériels informatiques, maintenance, dépannage et réparation — pour que vos outils numériques ne soient jamais un frein à votre activité."
+    - title: "Logistique & Services"
+      icon: logistique
+      link: "/services#pole-3"
+      content: "Commerce général et fourniture de biens et services — une réponse flexible à vos besoins opérationnels."
+  link:
+    label: "Découvrir tous nos services"
+    url: "/services"
 
 # feature
-feature: 
-  title: Something You Need To Know
+feature:
+  title: Pourquoi choisir FÖFÖÏ TECH
   features:
-  - name: "Clean Code"
-    icon: "/images/code.svg"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil"
-  - name: "Object Oriented"
-    icon: "/images/oop.svg"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil"
-  - name: "24h Service"
-    icon: "/images/user-clock.svg"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil"
-  - name: "Value for Money"
-    icon: "/images/love.svg"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil"
-  - name: "Faster Response"
-    icon: "/images/speedometer.svg"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil"
-  - name: "Cloud Support"
-    icon: "/images/cloud.svg"
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit quam nihil"
+  - name: "Entreprise enregistrée et conforme"
+    icon: "shield"
+    content: "RCCM GN.TCC.2025.B.11045, opérant sous le régime OHADA — une structure fiable et transparente."
+  - name: "Équipe pluridisciplinaire"
+    icon: "team"
+    content: "Économistes, ingénieurs, techniciens et formateurs réunis autour de vos projets."
+  - name: "Basée à Coyah, au service de tout Conakry"
+    icon: "location"
+    content: "Proximité et réactivité pour toutes vos demandes, quel que soit votre secteur."
+  - name: "Un seul interlocuteur, plusieurs domaines"
+    icon: "layers"
+    content: "Construction, informatique, logistique — simplifiez la gestion de vos projets."
 
 # services
 services:
-  - title: "It is the most advanced digital marketing and it company."
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
+  - title: "Génie Civil & Immobilier"
+    icon: btp
+    content: "Nous accompagnons les particuliers et les entreprises dans leurs projets de construction et d'aménagement de terrain. De la pose des fondations au lotissement, FÖFÖÏ TECH assure chaque étape avec rigueur et conformité aux normes en vigueur."
+    image_alt: "Chantier de construction encadré par les équipes FÖFÖÏ TECH"
+    highlights:
+      - "Construction (BTP) dans le respect des normes techniques"
+      - "Vente et aménagement de terrains"
+      - "Organisation de projets de lotissement"
     images:
-      - "/images/service-slide-1.png"
-      - "/images/service-slide-2.png"
-      - "/images/service-slide-3.png"
+      - "/images/service-btp.jpg"
     button:
       enable: true
-      label: Check it out
+      label: Discuter de mon projet de construction
       link: /contact
 
-  - title: "It is a privately owned Information and cyber security company"
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
-    images: 
-      - "/images/service-slide-1.png"
-    button:
-      enable: true
-      label: Check it out
-      link: /contact
-  
-  - title: "It’s a team of experienced and skilled people with distributions"
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
+  - title: "Technologies & Informatique"
+    icon: informatique
+    content: "FÖFÖÏ TECH accompagne les entreprises et particuliers dans l'acquisition, la maintenance et la réparation de leurs équipements informatiques. Vente de matériel, dépannage rapide, réparation — pour que vos outils numériques ne soient jamais un frein à votre activité."
+    image_alt: "Technicien FÖFÖÏ TECH intervenant sur du matériel informatique"
+    highlights:
+      - "Vente de matériels informatiques"
+      - "Maintenance & dépannage rapides"
+      - "Diagnostic et réparation d'équipements"
     images:
-      - "/images/service-slide-1.png"
-      - "/images/service-slide-2.png"
-      - "/images/service-slide-3.png"
+      - "/images/service-informatique.jpg"
     button:
       enable: true
-      label: Check it out
+      label: Demander une intervention informatique
       link: /contact
 
-  - title: "A company standing different from others"
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat. consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur. Leo facilisi nunc viverra tellus. Ac laoreet sit vel consquat."
+  - title: "Logistique & Services"
+    icon: logistique
+    content: "Au-delà du BTP et de l'informatique, FÖFÖÏ TECH propose des prestations de commerce général et de fourniture de biens et services, pour accompagner les besoins logistiques variés de ses clients avec flexibilité."
+    image_alt: "Activité de commerce général et de fourniture de biens de FÖFÖÏ TECH"
+    highlights:
+      - "Commerce général et approvisionnement"
+      - "Fourniture de biens et services"
+      - "Prestations diverses sur mesure"
     images:
-      - "/images/service-slide-1.png"
-      - "/images/service-slide-2.png"
-      - "/images/service-slide-3.png"
+      - "/images/service-logistique.jpg"
     button:
       enable: true
-      label: Check it out
+      label: Décrire mon besoin
       link: /contact
-
-# workflow
-workflow: 
-  title: "Experience the best workflow with us"
-  image: "/images/banner.svg"
-  description: ""
 
 # call_to_action
 call_to_action:
-  title: Ready to get started?
-  content: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat tristique eget amet, tempus eu at consecttur.
-  image: '/images/cta.svg'
+  title: Un projet à réaliser ? Parlons-en.
+  content: "Contactez-nous dès aujourd'hui pour un devis rapide et sans engagement. Notre équipe est disponible pour toute demande BTP, informatique ou de services."
   button:
     enable: true
-    label: "Contact Us"
+    label: "Demander un devis"
     link: "/contact"
 ---

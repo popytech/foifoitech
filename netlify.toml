@@ -1,2 +1,11 @@
+[build]
+  command = "pnpm build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Le contenu Markdown est lu par le système de fichiers au moment du rendu :
+# il doit être embarqué dans le bundle des fonctions serverless.
 [functions]
-included_files = ["content/**"]
+  included_files = ["src/content/**"]

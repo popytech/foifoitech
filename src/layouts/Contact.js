@@ -1,5 +1,7 @@
 import config from "@config/config.json";
 import { markdownify } from "@lib/utils/textConverter";
+import ContactForm from "@layouts/components/ContactForm";
+import GoogleMap from "@layouts/components/GoogleMap";
 
 const Contact = ({ data }) => {
   const { frontmatter } = data;
@@ -7,69 +9,67 @@ const Contact = ({ data }) => {
   const { contact_form_action } = config.params;
 
   return (
-    <section className="section">
-      <div className="container">
-        {markdownify(title, "h1", "text-center font-normal")}
-        <div className="section row pb-0">
-          <div className="col-12 md:col-6 lg:col-7">
-            <form
-              className="contact-form"
-              method="POST"
-              action={contact_form_action}
-            >
-              <div className="mb-3">
-                <input
-                  className="form-input w-full rounded-sm"
-                  name="name"
-                  type="text"
-                  placeholder="Name"
-                  required
-                />
+    <>
+      {/* Top Banner Header */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white py-12 lg:py-16">
+        <div className="pointer-events-none absolute -top-20 left-1/2 -z-10 h-72 w-96 -translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
+        <div className="container text-center">
+          <span className="ft-badge mb-3">Contact & Rendez-vous</span>
+          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+            {title}
+          </h1>
+          <p className="mt-3 text-base text-slate-600 sm:text-lg max-w-xl mx-auto">
+            Besoin d'un devis BTP, d'un dépannage informatique ou d'un service logistique ? Contactez notre équipe à Coyah.
+          </p>
+        </div>
+      </section>
+
+      {/* Main Form & Info Section */}
+      <section className="section py-12 lg:py-16">
+        <div className="container">
+          <div className="grid gap-12 lg:grid-cols-12 items-start">
+            <div className="lg:col-span-7">
+              <ContactForm action={contact_form_action} />
+            </div>
+
+            <div className="lg:col-span-5 space-y-6">
+              {/* Info Card */}
+              <div className="rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-xl">
+                <h3 className="text-xl font-bold text-slate-900">
+                  {info.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                  {info.description}
+                </p>
+
+                <div className="my-6 border-t border-slate-100" />
+
+                <ul className="space-y-4">
+                  {info.contacts.map((contact, index) => (
+                    <li key={index} className="flex items-start gap-3 text-sm text-slate-700">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <svg className="h-4 w-4 stroke-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      </div>
+                      <div className="contact-list pt-1">
+                        {markdownify(contact, "p", "text-slate-700")}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="mb-3">
-                <input
-                  className="form-input w-full rounded-sm"
-                  name="email"
-                  type="email"
-                  placeholder="Your email"
-                  required
-                />
+
+              {/* Localisation */}
+              <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-xl">
+                <GoogleMap />
               </div>
-              <div className="mb-3">
-                <input
-                  className="form-input w-full rounded-sm"
-                  name="subject"
-                  type="text"
-                  placeholder="Subject"
-                  required
-                />
-              </div>
-              <div className="mb-3">
-                <textarea
-                  className="form-textarea w-full rounded-md"
-                  rows="7"
-                  placeholder="Your message"
-                />
-              </div>
-              <button type="submit" className="btn btn-primary">
-                Send Now
-              </button>
-            </form>
-          </div>
-          <div className="content col-12 md:col-6 lg:col-5">
-            {markdownify(info.title, "h4", "h5")}
-            {markdownify(info.description, "p", "mt-4")}
-            <ul className="contact-list mt-5">
-              {info.contacts.map((contact, index) => (
-                <li key={index}>
-                  {markdownify(contact, "strong", "text-text-dark")}
-                </li>
-              ))}
-            </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
