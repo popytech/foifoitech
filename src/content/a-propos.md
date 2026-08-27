@@ -26,13 +26,28 @@ mission:
 domaines:
   - icon: btp
     title: "Génie Civil & Immobilier"
-    link: "/services#pole-1"
+    link: "/services/genie-civil-immobilier"
   - icon: informatique
     title: "Technologies & Informatique"
-    link: "/services#pole-2"
+    link: "/services/technologies-informatique"
   - icon: logistique
     title: "Logistique & Services"
-    link: "/services#pole-3"
+    link: "/services/logistique-services"
+  - icon: formation
+    title: "Formation Professionnelle"
+    link: "/services/formation-professionnelle"
+  - icon: camera
+    title: "Sécurité & Vidéosurveillance"
+    link: "/services/securite-videosurveillance"
+  - icon: droplet
+    title: "Assainissement"
+    link: "/services/assainissement"
+  - icon: megaphone
+    title: "Sensibilisation"
+    link: "/services/sensibilisation"
+  - icon: heart
+    title: "Assistance Sociale"
+    link: "/services/assistance-sociale"
 
 legal:
   - label: "Forme juridique"

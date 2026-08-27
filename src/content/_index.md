@@ -12,23 +12,43 @@ banner:
 
 # présentation rapide
 presentation:
-  title: "Une entreprise, trois domaines d'expertise"
+  title: "Une entreprise, plusieurs domaines d'expertise"
   paragraphs:
     - "FÖFÖÏ TECH est une entreprise guinéenne basée à Coyah, opérant sous le régime OHADA. Nous réunissons sous un même toit des compétences en construction, en ingénierie, en informatique et en services techniques, pour répondre aux besoins concrets des particuliers, des entreprises et des institutions en Guinée."
     - "Que vous ayez un projet de construction, un besoin en équipement informatique, ou une prestation de services à confier, FÖFÖÏ TECH vous apporte une réponse rapide, sérieuse et conforme aux normes en vigueur."
   poles:
     - title: "Génie Civil & Immobilier"
       icon: btp
-      link: "/services#pole-1"
+      link: "/services/genie-civil-immobilier"
       content: "Construction, vente et aménagement de terrains, lotissement — nous accompagnons vos projets immobiliers du terrain jusqu'à la réalisation."
     - title: "Technologies & Informatique"
       icon: informatique
-      link: "/services#pole-2"
+      link: "/services/technologies-informatique"
       content: "Vente de matériels informatiques, maintenance, dépannage et réparation — pour que vos outils numériques ne soient jamais un frein à votre activité."
     - title: "Logistique & Services"
       icon: logistique
-      link: "/services#pole-3"
+      link: "/services/logistique-services"
       content: "Commerce général et fourniture de biens et services — une réponse flexible à vos besoins opérationnels."
+    - title: "Formation Professionnelle"
+      icon: formation
+      link: "/services/formation-professionnelle"
+      content: "Bureautique, sécurité électronique, ingénierie BTP, comptabilité et digital — développez vos compétences avec nos formations pratiques."
+    - title: "Sécurité & Vidéosurveillance"
+      icon: camera
+      link: "/services/securite-videosurveillance"
+      content: "Installation de caméras de vidéosurveillance, alarmes et sécurisation de sites — protégez vos biens et vos locaux."
+    - title: "Assainissement"
+      icon: droplet
+      link: "/services/assainissement"
+      content: "Évacuation des eaux usées, drainage et hygiène des sites — des solutions durables pour vos espaces."
+    - title: "Sensibilisation"
+      icon: megaphone
+      link: "/services/sensibilisation"
+      content: "Campagnes de sensibilisation et d'éducation communautaire sur la santé, la sécurité et l'environnement."
+    - title: "Assistance Sociale"
+      icon: heart
+      link: "/services/assistance-sociale"
+      content: "Écoute, orientation et accompagnement social des particuliers et des familles."
   link:
     label: "Découvrir tous nos services"
     url: "/services"
@@ -95,6 +115,20 @@ services:
     button:
       enable: true
       label: Décrire mon besoin
+      link: /contact
+
+  - title: "Formation Professionnelle"
+    icon: formation
+    content: "FÖFÖÏ TECH propose des formations professionnelles pratiques, pour particuliers et entreprises, couvrant la bureautique, la sécurité électronique, l'ingénierie BTP, la comptabilité et le digital."
+    image_alt: ""
+    highlights:
+      - "Bureautique & audiovisuel : Windows, Word, PowerPoint, Excel (1 et 2), Access, Internet, Outlook"
+      - "Sécurité électronique : installation de caméras de surveillance (débutant et intermédiaire), maintenance électronique et informatique"
+      - "Ingénierie BTP, comptabilité & Sage 100, digital"
+    images: []
+    button:
+      enable: true
+      label: M'inscrire à une formation
       link: /contact
 
 # call_to_action

@@ -7,13 +7,21 @@ const LABEL_CLASS =
   "mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-600";
 
 const SUBJECTS = [
-  "Devis BTP & Génie Civil",
-  "Intervention & Vente Informatique",
-  "Commerce & Logistique",
+  "Génie Civil & Immobilier",
+  "Technologies & Informatique",
+  "Logistique & Services",
+  "Formation Professionnelle",
+  "Sécurité & Vidéosurveillance",
+  "Assainissement",
+  "Sensibilisation",
+  "Assistance Sociale",
   "Autre demande",
 ];
 
-export default function ContactForm({ action = "/api/contact" }) {
+export default function ContactForm({ action = "/api/contact", defaultSubject }) {
+  const initialSubject = SUBJECTS.includes(defaultSubject)
+    ? defaultSubject
+    : "";
   const [state, setState] = useState({
     loading: false,
     success: null,
@@ -132,8 +140,12 @@ export default function ContactForm({ action = "/api/contact" }) {
         <select
           id="subject"
           name="subject"
+          defaultValue={initialSubject}
           className={FIELD_CLASS.replace("form-input", "form-select")}
         >
+          <option value="" disabled>
+            Sélectionnez un sujet
+          </option>
           {SUBJECTS.map((subject) => (
             <option key={subject} value={subject}>
               {subject}

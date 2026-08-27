@@ -1,6 +1,6 @@
 import Icon from "@layouts/components/Icon";
+import MagicCard from "@layouts/components/MagicCard";
 import Reveal from "@layouts/components/Reveal";
-import Image from "next/image";
 import Link from "next/link";
 
 const ServicesPage = ({ data }) => {
@@ -32,114 +32,42 @@ const ServicesPage = ({ data }) => {
         </div>
       </section>
 
-      {/* Aperçu des trois pôles — repères cliquables */}
-      <section className="container -mt-2 pb-4">
-        <div className="grid gap-4 sm:grid-cols-3">
-          {poles.map((pole, i) => (
-            <Reveal as="div" key={pole.title} delay={i * 90} direction="scale">
-              <a
-                href={`#pole-${i + 1}`}
-                className="group flex items-center gap-3 rounded-xl border border-slate-200/80 bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg"
-              >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                  <Icon name={pole.icon} className="h-6 w-6" />
-                </span>
-                <span className="text-sm leading-snug font-bold text-slate-900">
-                  {pole.title}
-                </span>
-              </a>
-            </Reveal>
-          ))}
+      {/* Grille des pôles — chacun a sa propre page dédiée */}
+      <section className="section py-8 lg:py-12">
+        <div className="container">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {poles.map((pole, i) => (
+              <Reveal as="div" key={pole.slug} delay={i * 80} direction="scale">
+                <MagicCard className="h-full rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl">
+                  <Link
+                    href={`/services/${pole.slug}`}
+                    className="group relative flex h-full flex-col p-7"
+                  >
+                    <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/25">
+                      <Icon name={pole.icon} className="h-7 w-7" />
+                    </span>
+                    <h2 className="text-lg font-bold text-slate-900 transition-colors group-hover:text-primary">
+                      {pole.title}
+                    </h2>
+                    {pole.subtitle && (
+                      <p className="mt-1.5 text-sm font-semibold text-primary/80">
+                        {pole.subtitle}
+                      </p>
+                    )}
+                    <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">
+                      {pole.content}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-primary transition-all group-hover:gap-2.5">
+                      Découvrir ce domaine
+                      <Icon name="arrow" className="h-4 w-4" />
+                    </span>
+                  </Link>
+                </MagicCard>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
-
-      {/* Une carte détaillée par pôle */}
-      {poles.map((pole, i) => (
-        <section
-          key={pole.title}
-          id={`pole-${i + 1}`}
-          className={`section scroll-mt-24 py-14 lg:py-20 ${
-            i % 2 ? "bg-slate-50/80" : "bg-white"
-          }`}
-        >
-          <div className="container">
-            <div className="items-center gap-10 md:grid md:grid-cols-2 lg:gap-16">
-              {/* Visuel */}
-              <Reveal
-                as="div"
-                direction={i % 2 === 0 ? "left" : "right"}
-                className={`group overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-2 shadow-xl ${
-                  i % 2 === 0 ? "" : "md:order-2"
-                }`}
-              >
-                <Image
-                  src={pole.image}
-                  alt={pole.image_alt || pole.title}
-                  width={650}
-                  height={460}
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="h-[280px] w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[380px]"
-                />
-              </Reveal>
-
-              {/* Détail des prestations */}
-              <Reveal
-                as="div"
-                direction={i % 2 === 0 ? "right" : "left"}
-                delay={120}
-                className={`mt-8 md:mt-0 ${i % 2 === 0 ? "" : "md:order-1"}`}
-              >
-                <div className="mb-4 inline-flex items-center gap-2.5 rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-semibold text-primary">
-                  <Icon name={pole.icon} className="h-4 w-4" />
-                  Pôle n°{i + 1}
-                </div>
-
-                <h2 className="text-2xl leading-tight font-bold tracking-tight text-slate-900 sm:text-3xl">
-                  {pole.title}
-                </h2>
-                {pole.subtitle && (
-                  <p className="mt-2 text-base font-semibold text-primary">
-                    {pole.subtitle}
-                  </p>
-                )}
-                <p className="mt-4 leading-relaxed text-slate-600">
-                  {pole.content}
-                </p>
-
-                <h3 className="mt-7 mb-3 text-sm font-bold tracking-wider text-slate-900 uppercase">
-                  Nos prestations
-                </h3>
-                <ul className="space-y-3">
-                  {pole.prestations?.map((p) => (
-                    <li key={p.name} className="flex items-start gap-3">
-                      <Icon
-                        name="shield"
-                        className="mt-0.5 h-5 w-5 shrink-0 text-primary"
-                      />
-                      <span className="text-sm sm:text-base">
-                        <strong className="font-semibold text-slate-900">
-                          {p.name}
-                        </strong>
-                        <span className="text-slate-600"> — {p.detail}</span>
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                {pole.cta && (
-                  <Link
-                    href="/contact"
-                    className="mt-7 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/20 transition-all hover:gap-3 hover:shadow-xl sm:text-base"
-                  >
-                    <span>{pole.cta}</span>
-                    <Icon name="arrow" className="h-5 w-5" />
-                  </Link>
-                )}
-              </Reveal>
-            </div>
-          </div>
-        </section>
-      ))}
 
       {/* Bloc de fin */}
       {closing && (

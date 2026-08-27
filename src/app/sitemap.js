@@ -1,4 +1,4 @@
-import { getSinglePage } from "@lib/contentParser";
+import { getRegularPage, getSinglePage } from "@lib/contentParser";
 import { absoluteUrl } from "@lib/utils/siteUrl";
 
 // Priorités par page : l'accueil et les pages commerciales passent devant
@@ -12,15 +12,20 @@ const PRIORITY = {
   "mentions-legales": 0.3,
 };
 
-export default function sitemap() {
+export default async function sitemap() {
   const lastModified = new Date();
 
   const pages = getSinglePage("src/content").map((page) => page.slug);
 
-  return ["", ...pages].map((slug) => ({
+  const { frontmatter } = await getRegularPage("services");
+  const poleSlugs = (frontmatter.poles || []).map(
+    (pole) => `services/${pole.slug}`
+  );
+
+  return ["", ...pages, ...poleSlugs].map((slug) => ({
     url: absoluteUrl(slug === "" ? "/" : `/${slug}`),
     lastModified,
     changeFrequency: slug === "" ? "monthly" : "yearly",
-    priority: PRIORITY[slug] ?? 0.5,
+    priority: slug.startsWith("services/") ? 0.8 : (PRIORITY[slug] ?? 0.5),
   }));
 }

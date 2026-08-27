@@ -9,7 +9,7 @@ import { getRegularPage, getSinglePage } from "@lib/contentParser";
 import { plainify } from "@lib/utils/textConverter";
 
 // for all regular pages
-const RegularPages = async ({ params }) => {
+const RegularPages = async ({ params, searchParams }) => {
   const { regular } = await params;
   const regularPageData = await getRegularPage(regular);
   const { layout } = regularPageData.frontmatter;
@@ -17,7 +17,7 @@ const RegularPages = async ({ params }) => {
   return layout === "404" ? (
     <NotFound data={regularPageData} />
   ) : layout === "contact" ? (
-    <Contact data={regularPageData} />
+    <Contact data={regularPageData} searchParams={await searchParams} />
   ) : layout === "equipe" ? (
     <Equipe data={regularPageData} />
   ) : layout === "services" ? (

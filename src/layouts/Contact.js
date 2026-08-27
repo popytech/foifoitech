@@ -5,10 +5,12 @@ import ContactForm from "@layouts/components/ContactForm";
 import GoogleMap from "@layouts/components/GoogleMap";
 import Reveal from "@layouts/components/Reveal";
 
-const Contact = ({ data }) => {
+const Contact = ({ data, searchParams }) => {
   const { frontmatter } = data;
   const { title, info } = frontmatter;
   const { contact_form_action } = config.params;
+  const defaultSubject =
+    typeof searchParams?.sujet === "string" ? searchParams.sujet : undefined;
 
   return (
     <>
@@ -43,7 +45,10 @@ const Contact = ({ data }) => {
               direction="left"
               className="relative overflow-hidden rounded-2xl lg:col-span-7"
             >
-              <ContactForm action={contact_form_action} />
+              <ContactForm
+                action={contact_form_action}
+                defaultSubject={defaultSubject}
+              />
               <BorderBeam size={140} duration={6} borderWidth={2} />
             </Reveal>
 

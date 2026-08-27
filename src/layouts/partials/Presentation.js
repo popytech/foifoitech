@@ -27,7 +27,7 @@ const Presentation = ({ presentation }) => {
           ))}
         </Reveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {poles.map((pole, i) => (
             <Reveal as="div" key={pole.title} delay={i * 100} direction="scale">
               <MagicCard className="h-full rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl">

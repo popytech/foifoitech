@@ -126,11 +126,11 @@ const APropos = ({ data }) => {
             <Reveal className="mx-auto max-w-2xl text-center">
               <span className="ft-badge mb-3">Nos domaines</span>
               <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                Trois expertises, un seul interlocuteur
+                Des expertises complémentaires, un seul interlocuteur
               </h2>
             </Reveal>
 
-            <div className="mt-10 grid gap-5 sm:grid-cols-3">
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {domaines.map((d, i) => (
                 <Reveal as="div" key={d.title} delay={i * 90} direction="scale">
                   <Link

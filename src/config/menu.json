@@ -21,9 +21,14 @@
     {
       "name": "Nos domaines",
       "menu": [
-        { "text": "Génie Civil & Immobilier", "url": "/services#pole-1" },
-        { "text": "Technologies & Informatique", "url": "/services#pole-2" },
-        { "text": "Logistique & Services", "url": "/services#pole-3" }
+        { "text": "Génie Civil & Immobilier", "url": "/services/genie-civil-immobilier" },
+        { "text": "Technologies & Informatique", "url": "/services/technologies-informatique" },
+        { "text": "Logistique & Services", "url": "/services/logistique-services" },
+        { "text": "Formation Professionnelle", "url": "/services/formation-professionnelle" },
+        { "text": "Sécurité & Vidéosurveillance", "url": "/services/securite-videosurveillance" },
+        { "text": "Assainissement", "url": "/services/assainissement" },
+        { "text": "Sensibilisation", "url": "/services/sensibilisation" },
+        { "text": "Assistance Sociale", "url": "/services/assistance-sociale" }
       ]
     }
   ]

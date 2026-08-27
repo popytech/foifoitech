@@ -25,14 +25,22 @@ const Services = ({ services }) => {
                 !isOdd && "md:order-2"
               }`}
             >
-              <Image
-                src={service.images[0]}
-                alt={service.image_alt || service.title}
-                width={650}
-                height={480}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="h-[320px] w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[400px]"
-              />
+              {service.images?.[0] ? (
+                <Image
+                  src={service.images[0]}
+                  alt={service.image_alt || service.title}
+                  width={650}
+                  height={480}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="h-[320px] w-full rounded-xl object-cover transition-transform duration-700 group-hover:scale-105 sm:h-[400px]"
+                />
+              ) : (
+                <div className="flex h-[320px] w-full items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 sm:h-[400px]">
+                  {service.icon && (
+                    <Icon name={service.icon} className="h-20 w-20 text-primary/30" />
+                  )}
+                </div>
+              )}
             </Reveal>
 
             {/* Contenu */}
@@ -75,7 +83,11 @@ const Services = ({ services }) => {
               {service.button.enable && (
                 <div className="mt-7">
                   <Link
-                    href={service.button.link}
+                    href={
+                      service.button.link === "/contact"
+                        ? `/contact?sujet=${encodeURIComponent(service.title)}`
+                        : service.button.link
+                    }
                     className="inline-flex items-center gap-2 text-base font-bold text-primary transition-all hover:gap-3"
                   >
                     <span>{service.button.label}</span>
