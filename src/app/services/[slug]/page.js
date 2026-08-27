@@ -1,8 +1,15 @@
 import config from "@config/config.json";
+import FormationAcademy from "@layouts/FormationAcademy";
 import ServicePole from "@layouts/ServicePole";
 import { getRegularPage } from "@lib/contentParser";
 import { plainify } from "@lib/utils/textConverter";
 import { notFound } from "next/navigation";
+
+// La page Formation a un traitement enrichi dédié (catalogue de
+// formations, étapes, FAQ) ; les autres pôles utilisent le gabarit générique.
+const RICH_LAYOUTS = {
+  "formation-professionnelle": FormationAcademy,
+};
 
 const getPoles = async () => {
   const { frontmatter } = await getRegularPage("services");
@@ -16,7 +23,9 @@ const ServicePolePage = async ({ params }) => {
 
   if (!pole) return notFound();
 
-  return <ServicePole pole={pole} poles={poles} />;
+  const Layout = RICH_LAYOUTS[slug] || ServicePole;
+
+  return <Layout pole={pole} poles={poles} />;
 };
 
 export default ServicePolePage;
