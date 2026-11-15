@@ -7,7 +7,7 @@ banner:
   button:
     enable: true
     label: "Demander un devis"
-    link: "/contact"
+    link: "/contact?sujet=Demande%20de%20devis"
     rel: ""
 
 # présentation rapide
@@ -188,5 +188,5 @@ call_to_action:
   button:
     enable: true
     label: "Demander un devis"
-    link: "/contact"
+    link: "/contact?sujet=Demande%20de%20devis"
 ---

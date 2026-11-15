@@ -16,14 +16,22 @@
   "nav_button": {
     "enable": true,
     "label": "Demander un devis",
-    "link": "/contact"
+    "link": "/contact?sujet=Demande%20de%20devis"
   },
 
   "params": {
-    "contact_form_action": "/api/contact",
+    "contact_email": "contact@foifoitech.com",
     "rccm": "GN.TCC.2025.B.11045",
     "nif": "805298676",
     "copyright": "FÖFÖÏ TECH SARLU — RCCM GN.TCC.2025.B.11045 — © 2026 Tous droits réservés"
+  },
+
+  "web3forms": {
+    "endpoint": "https://api.web3forms.com/submit",
+    "recipients": [
+      { "label": "directeur@foifoitech.com", "access_key": "" },
+      { "label": "contact@foifoitech.com", "access_key": "" }
+    ]
   },
 
   "google_tag_manager": {

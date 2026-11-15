@@ -5,12 +5,12 @@ import ContactForm from "@layouts/components/ContactForm";
 import GoogleMap from "@layouts/components/GoogleMap";
 import Reveal from "@layouts/components/Reveal";
 
-const Contact = ({ data, searchParams }) => {
+// Page 100 % statique : le sujet pré-sélectionné (?sujet=…) est lu par le
+// formulaire côté navigateur, et l'envoi passe par Web3Forms (sans serveur).
+const Contact = ({ data }) => {
   const { frontmatter } = data;
   const { title, info } = frontmatter;
-  const { contact_form_action } = config.params;
-  const defaultSubject =
-    typeof searchParams?.sujet === "string" ? searchParams.sujet : undefined;
+  const { web3forms } = config;
 
   return (
     <>
@@ -46,8 +46,8 @@ const Contact = ({ data, searchParams }) => {
               className="relative overflow-hidden rounded-2xl lg:col-span-7"
             >
               <ContactForm
-                action={contact_form_action}
-                defaultSubject={defaultSubject}
+                web3forms={web3forms}
+                contactEmail={config.params.contact_email}
               />
               <BorderBeam size={140} duration={6} borderWidth={2} />
             </Reveal>

@@ -15,7 +15,7 @@ services techniques, Somaya-Fory, Commune de Coyah, Conakry (Guinée).
 | Framework | Next.js 16 (App Router, Turbopack) |
 | Styles | Tailwind CSS 4 |
 | Contenu | Markdown (`src/content/`) + front-matter |
-| Emails | API REST Resend (appel `fetch`, sans dépendance npm) |
+| Emails | [Web3Forms](https://web3forms.com) (appel `fetch` depuis le navigateur, sans serveur) |
 | Gestionnaire de paquets | pnpm |
 
 ---
@@ -24,7 +24,6 @@ services techniques, Somaya-Fory, Commune de Coyah, Conakry (Guinée).
 
 ```bash
 pnpm install
-cp .env.example .env.local   # puis renseigner les variables
 pnpm dev                     # http://localhost:3000
 ```
 
@@ -38,29 +37,53 @@ pnpm lint      # ESLint
 
 ---
 
-## Variables d'environnement
-
-Toutes décrites dans [`.env.example`](.env.example). En production, **deux sont
-indispensables** :
+## Variable d'environnement
 
 | Variable | Rôle | Si absente |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | URL publique (canonical, og:url, sitemap) | URLs SEO en `localhost` |
-| `RESEND_API_KEY` | Envoi des demandes du formulaire | Le formulaire renvoie une erreur au visiteur |
-| `CONTACT_FROM_EMAIL` | Expéditeur (domaine vérifié Resend) | Repli sur `onboarding@resend.dev` |
-| `CONTACT_TO_EMAILS` | Destinataires | Repli sur les deux emails FÖFÖÏ TECH |
 
-### Configurer Resend
+---
 
-1. Créer un compte sur [resend.com](https://resend.com).
-2. **Domains → Add Domain** : ajouter le domaine du site et publier les
-   enregistrements DNS (SPF, DKIM) fournis par Resend.
-3. **API Keys → Create** : copier la clé dans `RESEND_API_KEY`.
-4. Définir `CONTACT_FROM_EMAIL` sur une adresse **de ce domaine vérifié**.
+## Formulaire de contact (Web3Forms)
 
-Sans domaine vérifié, l'expéditeur de test `onboarding@resend.dev` fonctionne
-mais n'envoie qu'à l'adresse du titulaire du compte Resend — suffisant pour une
-recette, pas pour la production.
+Toutes les demandes — **contact, demande de devis, inscription à une formation**
+— passent par la page `/contact` et sont envoyées à **deux boîtes** :
+`directeur@foifoitech.com` et `contact@foifoitech.com`.
+
+L'envoi part directement du navigateur vers Web3Forms (pas de serveur, pas de
+variable d'environnement) : la page Contact est une page statique, présente sur
+n'importe quel hébergement.
+
+Une clé d'accès Web3Forms est liée à **une seule** adresse. Il faut donc une clé
+par boîte, et le site envoie chaque demande une fois par clé :
+
+1. Aller sur [web3forms.com](https://web3forms.com) → **Create your Access Key**.
+2. Saisir `directeur@foifoitech.com` : la clé arrive dans cette boîte.
+3. Recommencer avec `contact@foifoitech.com`.
+4. Coller chaque clé dans `src/config/config.json` :
+
+   ```json
+   "web3forms": {
+     "endpoint": "https://api.web3forms.com/submit",
+     "recipients": [
+       { "label": "directeur@foifoitech.com", "access_key": "CLÉ-DIRECTEUR" },
+       { "label": "contact@foifoitech.com",   "access_key": "CLÉ-CONTACT" }
+     ]
+   }
+   ```
+
+   Les clés d'accès Web3Forms sont publiques par conception : elles peuvent
+   figurer dans le code du site.
+5. Pousser sur GitHub, puis envoyer une demande test depuis `/contact` et
+   vérifier la réception **dans les deux boîtes**.
+
+Tant qu'aucune clé n'est renseignée, le formulaire affiche un message invitant le
+visiteur à écrire à `contact@foifoitech.com` ou à appeler. Si une seule clé est
+renseignée, seule cette boîte reçoit les demandes.
+
+Offre gratuite Web3Forms : 250 envois par mois **et par clé**. Pas de pièce
+jointe sur l'offre gratuite.
 
 ---
 
@@ -104,7 +127,7 @@ Le script `scripts/themeGenerator.mjs` propage la valeur dans le CSS au build.
 | 5 pages (Accueil, À propos, Services, Contact, Mentions légales) | ✅ + page Équipe dédiée |
 | RCCM en pied de page sur toutes les pages | ✅ |
 | NIF en mentions légales | ✅ |
-| Formulaire de contact fonctionnel | ✅ (validation, anti-spam, limitation de débit) |
+| Formulaire de contact fonctionnel | ✅ (validation, anti-spam par pot de miel, envoi Web3Forms vers 2 boîtes) |
 | Bouton WhatsApp flottant | ✅ toutes pages → `wa.me/224625573434` |
 | Carte Google Maps | ✅ embed sans clé API + lien itinéraire |
 | Responsive mobile / tablette / desktop | ✅ |
@@ -119,14 +142,14 @@ Le script `scripts/themeGenerator.mjs` propage la valeur dans le CSS au build.
 ### Vercel (recommandé)
 
 1. Importer le dépôt sur [vercel.com](https://vercel.com).
-2. Renseigner les variables d'environnement (**Settings → Environment Variables**).
+2. Renseigner `NEXT_PUBLIC_SITE_URL` (**Settings → Environment Variables**).
 3. Déployer — build et commande de démarrage sont détectés automatiquement.
 4. Brancher le nom de domaine dans **Settings → Domains**.
 
 ### Netlify
 
 Le fichier `netlify.toml` est présent. Ajouter le plugin
-`@netlify/plugin-nextjs` et les mêmes variables d'environnement.
+`@netlify/plugin-nextjs` et la variable d'environnement `NEXT_PUBLIC_SITE_URL`.
 
 ### Après mise en ligne
 
@@ -135,8 +158,8 @@ Le fichier `netlify.toml` est présent. Ajouter le plugin
 - [ ] Vérifier que `NEXT_PUBLIC_SITE_URL` pointe le domaine final, puis
       contrôler `/sitemap.xml` et `/robots.txt`.
 - [ ] Soumettre le sitemap dans Google Search Console.
-- [ ] Envoyer une demande test via le formulaire et confirmer la réception sur
-      les deux adresses.
+- [ ] Renseigner les deux clés Web3Forms (voir « Formulaire de contact »), puis
+      envoyer une demande test et confirmer la réception sur les deux adresses.
 - [ ] Vérifier que le +224 625 57 34 34 est bien actif sur WhatsApp Business.
 
 ---
