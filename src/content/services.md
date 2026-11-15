@@ -9,7 +9,7 @@ poles:
     title: "Génie Civil & Immobilier"
     subtitle: "Vos projets de construction et d'aménagement, entre de bonnes mains"
     icon: btp
-    image: "/images/service-btp.jpg"
+    image: "/images/service-genie-civil.jpg"
     image_alt: "Chantier de construction encadré par les équipes FÖFÖÏ TECH"
     content: "Notre équipe accompagne les particuliers et les entreprises dans leurs projets de construction et d'aménagement de terrain, avec une expertise couvrant les phases essentielles de mise en œuvre."
     prestations:
@@ -57,8 +57,8 @@ poles:
     title: "Formation Professionnelle"
     subtitle: "Développez vos compétences avec nos formations pratiques"
     icon: formation
-    image: ""
-    image_alt: ""
+    image: "/images/service-formation.jpg"
+    image_alt: "Séance de formation pratique en salle informatique avec FÖFÖÏ TECH"
     content: "FÖFÖÏ TECH propose des formations professionnelles pratiques, pour particuliers et entreprises, couvrant la bureautique, la sécurité électronique, l'ingénierie BTP, la comptabilité et le digital."
     prestations:
       - name: "Bureautique & audiovisuel"
@@ -77,8 +77,8 @@ poles:
     title: "Sécurité & Vidéosurveillance"
     subtitle: "Protégez vos biens, vos locaux et vos chantiers"
     icon: camera
-    image: ""
-    image_alt: ""
+    image: "/images/service-securite.jpg"
+    image_alt: "Technicien FÖFÖÏ TECH installant une caméra de vidéosurveillance"
     content: "FÖFÖÏ TECH installe et entretient des systèmes de sécurité électronique pour protéger vos locaux, vos chantiers et vos biens."
     prestations:
       - name: "Vidéosurveillance"

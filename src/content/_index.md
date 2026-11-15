@@ -81,7 +81,7 @@ services:
       - "Vente et aménagement de terrains"
       - "Organisation de projets de lotissement"
     images:
-      - "/images/service-btp.jpg"
+      - "/images/service-genie-civil.jpg"
     button:
       enable: true
       label: Discuter de mon projet de construction
@@ -120,12 +120,13 @@ services:
   - title: "Formation Professionnelle"
     icon: formation
     content: "FÖFÖÏ TECH propose des formations professionnelles pratiques, pour particuliers et entreprises, couvrant la bureautique, la sécurité électronique, l'ingénierie BTP, la comptabilité et le digital."
-    image_alt: ""
+    image_alt: "Séance de formation pratique en salle informatique avec FÖFÖÏ TECH"
     highlights:
       - "Bureautique & audiovisuel : Windows, Word, PowerPoint, Excel (1 et 2), Access, Internet, Outlook"
       - "Sécurité électronique : installation de caméras de surveillance (débutant et intermédiaire), maintenance électronique et informatique"
       - "Ingénierie BTP, comptabilité & Sage 100, digital"
-    images: []
+    images:
+      - "/images/service-formation.jpg"
     button:
       enable: true
       label: M'inscrire à une formation

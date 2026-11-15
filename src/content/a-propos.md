@@ -12,7 +12,7 @@ intro:
 directeur:
   name: "Nicolas KOUNDOUNO"
   role: "Directeur Général — Économiste, Ingénieur Bâtiment"
-  photo: ""
+  photo: "/images/team/nicolas-koundouno-portrait.jpg"
   quote: "FÖFÖÏ TECH est né d'une volonté simple : apporter à nos clients guinéens des solutions techniques fiables, sans les faire courir entre plusieurs prestataires. Économiste de formation et ingénieur bâtiment, j'ai voulu construire une entreprise capable de répondre aussi bien aux besoins d'un chantier qu'à ceux d'un bureau en manque d'équipement informatique. Notre équipe, pluridisciplinaire et engagée, met un point d'honneur à la rigueur et à la conformité dans chacune de ses interventions. Merci de votre confiance."
 
 vision:
