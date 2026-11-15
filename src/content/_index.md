@@ -20,22 +20,32 @@ presentation:
     - title: "Génie Civil & Immobilier"
       icon: btp
       link: "/services/genie-civil-immobilier"
+      image: "/images/service-genie-civil.jpg"
+      image_alt: "Équipe FÖFÖÏ TECH étudiant un plan sur un chantier de construction"
       content: "Construction, vente et aménagement de terrains, lotissement — nous accompagnons vos projets immobiliers du terrain jusqu'à la réalisation."
     - title: "Technologies & Informatique"
       icon: informatique
       link: "/services/technologies-informatique"
+      image: "/images/service-informatique-maintenance.jpg"
+      image_alt: "Technicien tenant un tournevis lors d'une intervention de maintenance"
       content: "Vente de matériels informatiques, maintenance, dépannage et réparation — pour que vos outils numériques ne soient jamais un frein à votre activité."
     - title: "Logistique & Services"
       icon: logistique
       link: "/services/logistique-services"
+      image: "/images/service-logistique.jpg"
+      image_alt: "Activité de commerce général et de fourniture de biens de FÖFÖÏ TECH"
       content: "Commerce général et fourniture de biens et services — une réponse flexible à vos besoins opérationnels."
     - title: "Formation Professionnelle"
       icon: formation
       link: "/services/formation-professionnelle"
+      image: "/images/service-formation.jpg"
+      image_alt: "Séance de formation pratique en salle informatique avec FÖFÖÏ TECH"
       content: "Bureautique, sécurité électronique, ingénierie BTP, comptabilité et digital — développez vos compétences avec nos formations pratiques."
     - title: "Sécurité & Vidéosurveillance"
       icon: camera
       link: "/services/securite-videosurveillance"
+      image: "/images/service-securite.jpg"
+      image_alt: "Technicien FÖFÖÏ TECH installant une caméra de vidéosurveillance"
       content: "Installation de caméras de vidéosurveillance, alarmes et sécurisation de sites — protégez vos biens et vos locaux."
     - title: "Assainissement"
       icon: droplet
@@ -90,13 +100,13 @@ services:
   - title: "Technologies & Informatique"
     icon: informatique
     content: "FÖFÖÏ TECH accompagne les entreprises et particuliers dans l'acquisition, la maintenance et la réparation de leurs équipements informatiques. Vente de matériel, dépannage rapide, réparation — pour que vos outils numériques ne soient jamais un frein à votre activité."
-    image_alt: "Technicien FÖFÖÏ TECH intervenant sur du matériel informatique"
+    image_alt: "Technicien tenant un tournevis lors d'une intervention de maintenance"
     highlights:
       - "Vente de matériels informatiques"
       - "Maintenance & dépannage rapides"
       - "Diagnostic et réparation d'équipements"
     images:
-      - "/images/service-informatique.jpg"
+      - "/images/service-informatique-maintenance.jpg"
     button:
       enable: true
       label: Demander une intervention informatique
@@ -131,6 +141,45 @@ services:
       enable: true
       label: M'inscrire à une formation
       link: /contact
+
+# galerie photo
+gallery:
+  eyebrow: "En images"
+  title: "FÖFÖÏ TECH sur le terrain"
+  description: "Chantiers, installations de vidéosurveillance, interventions techniques : le travail de nos équipes, tel qu'il se passe."
+  images:
+    - src: "/images/gallery/securite-cablage-1.jpg"
+      alt: "Deux techniciens tirant des câbles réseau sur un échafaudage pour une installation de vidéosurveillance"
+      w: 1280
+      h: 1165
+    - src: "/images/gallery/chantier-technicien.jpg"
+      alt: "Technicien sur un chantier de construction, devant des murs en parpaings"
+      w: 810
+      h: 1080
+    - src: "/images/gallery/securite-armoire-reseau.jpg"
+      alt: "Technicien en gilet FÖFÖÏ TECH effectuant des branchements dans une armoire réseau"
+      w: 1280
+      h: 1280
+    - src: "/images/gallery/chantier-equipe.jpg"
+      alt: "Quatre membres de l'équipe FÖFÖÏ TECH posant devant un bâtiment en construction"
+      w: 1020
+      h: 765
+    - src: "/images/gallery/securite-supervision-armoire.jpg"
+      alt: "Écran de supervision Hikvision affichant plusieurs caméras, à côté de l'armoire de brassage"
+      w: 1080
+      h: 810
+    - src: "/images/gallery/securite-preparation.jpg"
+      alt: "Techniciens préparant des caméras de vidéosurveillance avant leur pose"
+      w: 1280
+      h: 1165
+    - src: "/images/gallery/chantier-visite.jpg"
+      alt: "Visite de chantier sur une dalle en cours de réalisation, avec des ouvriers à l'arrière-plan"
+      w: 684
+      h: 912
+    - src: "/images/gallery/chantier-duo-plans.jpg"
+      alt: "Deux techniciens FÖFÖÏ TECH consultant un plan devant des murs en parpaings"
+      w: 1020
+      h: 765
 
 # call_to_action
 call_to_action:

@@ -1,9 +1,10 @@
+import PhotoGallery from "@layouts/components/PhotoGallery";
 import Reveal from "@layouts/components/Reveal";
 import TeamCard from "@layouts/components/TeamCard";
 
 const Equipe = ({ data }) => {
   const { frontmatter } = data;
-  const { title, description, team } = frontmatter;
+  const { title, description, team, gallery } = frontmatter;
 
   return (
     <>
@@ -47,10 +48,26 @@ const Equipe = ({ data }) => {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* Photos de l'équipe sur le terrain */}
+      {gallery && (
+        <PhotoGallery
+          eyebrow={gallery.eyebrow}
+          title={gallery.title}
+          description={gallery.description}
+          images={gallery.images}
+          muted
+        />
+      )}
+
+      <section className="section py-12 lg:py-16">
+        <div className="container">
           {/* Bandeau de contact */}
           <Reveal
             direction="scale"
-            className="mt-16 overflow-hidden rounded-2xl border border-slate-200/80 bg-gradient-to-br from-slate-50 to-blue-50/50 p-8 text-center shadow-lg sm:p-10"
+            className="overflow-hidden rounded-2xl border border-slate-200/80 bg-gradient-to-br from-slate-50 to-blue-50/50 p-8 text-center shadow-lg sm:p-10"
           >
             <h3 className="text-xl font-bold text-slate-900 sm:text-2xl">Un projet sur mesure avec notre équipe ?</h3>
             <p className="mt-2 text-sm text-slate-600 sm:text-base max-w-xl mx-auto">

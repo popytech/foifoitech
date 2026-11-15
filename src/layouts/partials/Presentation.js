@@ -1,6 +1,7 @@
 import Icon from "@layouts/components/Icon";
 import MagicCard from "@layouts/components/MagicCard";
 import Reveal from "@layouts/components/Reveal";
+import ServiceCardMedia from "@layouts/components/ServiceCardMedia";
 import Link from "next/link";
 
 // Section « Une entreprise, trois domaines d'expertise » :
@@ -33,21 +34,28 @@ const Presentation = ({ presentation }) => {
               <MagicCard className="h-full rounded-2xl shadow-lg transition-shadow duration-300 hover:shadow-2xl">
                 <Link
                   href={pole.link}
-                  className="group relative flex h-full flex-col p-7"
+                  className="group relative flex h-full flex-col"
                 >
-                  <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/25">
-                    <Icon name={pole.icon} className="h-7 w-7" />
-                  </span>
-                  <h3 className="text-lg font-bold text-slate-900 transition-colors group-hover:text-primary">
-                    {pole.title}
-                  </h3>
-                  <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">
-                    {pole.content}
-                  </p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-primary transition-all group-hover:gap-2.5">
-                    En savoir plus
-                    <Icon name="arrow" className="h-4 w-4" />
-                  </span>
+                  <ServiceCardMedia
+                    image={pole.image}
+                    alt={pole.image_alt}
+                    icon={pole.icon}
+                  />
+                  <div className="flex flex-1 flex-col p-7">
+                    <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/25">
+                      <Icon name={pole.icon} className="h-7 w-7" />
+                    </span>
+                    <h3 className="text-lg font-bold text-slate-900 transition-colors group-hover:text-primary">
+                      {pole.title}
+                    </h3>
+                    <p className="mt-2.5 flex-1 text-sm leading-relaxed text-slate-600">
+                      {pole.content}
+                    </p>
+                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-primary transition-all group-hover:gap-2.5">
+                      En savoir plus
+                      <Icon name="arrow" className="h-4 w-4" />
+                    </span>
+                  </div>
                 </Link>
               </MagicCard>
             </Reveal>

@@ -5,6 +5,7 @@ import FaqAccordion from "@layouts/components/FaqAccordion";
 import Icon from "@layouts/components/Icon";
 import Reveal from "@layouts/components/Reveal";
 import ShimmerButton from "@layouts/components/ShimmerButton";
+import Image from "next/image";
 import Link from "next/link";
 
 // Catégorie + icône par formation — présentation uniquement, la donnée
@@ -195,7 +196,17 @@ const FormationAcademy = ({ pole, poles = [] }) => {
               delay={120}
               className="relative mt-10 flex h-[320px] items-center justify-center overflow-hidden rounded-2xl border border-slate-200/80 bg-gradient-to-br from-primary/10 to-primary/5 md:mt-0 lg:h-[420px]"
             >
-              <Icon name={pole.icon} className="h-28 w-28 text-primary/30" />
+              {pole.image ? (
+                <Image
+                  src={pole.image}
+                  alt={pole.image_alt || pole.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              ) : (
+                <Icon name={pole.icon} className="h-28 w-28 text-primary/30" />
+              )}
             </Reveal>
           </div>
         </div>

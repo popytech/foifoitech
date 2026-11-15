@@ -20,13 +20,46 @@ poles:
       - name: "Lotissement"
         detail: "Organisation et structuration de projets de lotissement."
     cta: "Discuter de mon projet de construction"
+    gallery:
+      - src: "/images/gallery/chantier-equipe.jpg"
+        alt: "Quatre membres de l'équipe FÖFÖÏ TECH posant devant un bâtiment en construction"
+        w: 1020
+        h: 765
+      - src: "/images/gallery/chantier-technicien.jpg"
+        alt: "Technicien sur un chantier de construction, devant des murs en parpaings"
+        w: 810
+        h: 1080
+      - src: "/images/gallery/equipe-deplacement.jpg"
+        alt: "Membre de l'équipe FÖFÖÏ TECH en déplacement"
+        w: 806
+        h: 1080
+      - src: "/images/gallery/chantier-plans.jpg"
+        alt: "Agents FÖFÖÏ TECH et ouvriers étudiant un plan sur un chantier"
+        w: 1020
+        h: 765
+      - src: "/images/gallery/chantier-duo-plans.jpg"
+        alt: "Deux techniciens FÖFÖÏ TECH consultant un plan devant des murs en parpaings"
+        w: 1020
+        h: 765
+      - src: "/images/gallery/chantier-duo-pose.jpg"
+        alt: "Deux techniciens FÖFÖÏ TECH en gilet et casquette sur un chantier"
+        w: 1020
+        h: 765
+      - src: "/images/gallery/chantier-visite.jpg"
+        alt: "Visite de chantier sur une dalle en cours de réalisation, avec des ouvriers à l'arrière-plan"
+        w: 684
+        h: 912
+      - src: "/images/gallery/chantier-duo-mur.jpg"
+        alt: "Deux membres de l'équipe FÖFÖÏ TECH devant les murs d'un bâtiment en construction"
+        w: 1080
+        h: 810
 
   - slug: "technologies-informatique"
     title: "Technologies & Informatique"
     subtitle: "Un parc informatique fiable, entretenu par des professionnels"
     icon: informatique
-    image: "/images/service-informatique.jpg"
-    image_alt: "Technicien FÖFÖÏ TECH intervenant sur du matériel informatique"
+    image: "/images/service-informatique-maintenance.jpg"
+    image_alt: "Technicien tenant un tournevis lors d'une intervention de maintenance"
     content: "FÖFÖÏ TECH accompagne les entreprises et particuliers dans l'acquisition, la maintenance et la réparation de leurs équipements informatiques, pour limiter les interruptions d'activité liées aux pannes techniques."
     prestations:
       - name: "Vente de matériels informatiques"
@@ -88,6 +121,35 @@ poles:
       - name: "Sécurisation de chantiers"
         detail: "Protection des sites en construction et des locaux professionnels."
     cta: "Sécuriser mon site"
+    gallery:
+      - src: "/images/gallery/securite-cablage-1.jpg"
+        alt: "Deux techniciens tirant des câbles réseau sur un échafaudage pour une installation de vidéosurveillance"
+        w: 1280
+        h: 1165
+      - src: "/images/gallery/securite-supervision-armoire.jpg"
+        alt: "Écran de supervision Hikvision affichant plusieurs caméras, à côté de l'armoire de brassage"
+        w: 1080
+        h: 810
+      - src: "/images/gallery/securite-supervision-mur.jpg"
+        alt: "Écran mural affichant seize caméras de vidéosurveillance Hikvision"
+        w: 1080
+        h: 810
+      - src: "/images/gallery/securite-denudage.jpg"
+        alt: "Technicien dénudant un câble lors d'une installation de caméras"
+        w: 1280
+        h: 1165
+      - src: "/images/gallery/securite-cablage-2.jpg"
+        alt: "Deux techniciens au travail sur le câblage d'un système de vidéosurveillance"
+        w: 1280
+        h: 1165
+      - src: "/images/gallery/securite-preparation.jpg"
+        alt: "Techniciens préparant des caméras de vidéosurveillance avant leur pose"
+        w: 1280
+        h: 1165
+      - src: "/images/gallery/securite-armoire-reseau.jpg"
+        alt: "Technicien en gilet FÖFÖÏ TECH effectuant des branchements dans une armoire réseau"
+        w: 1280
+        h: 1280
 
   - slug: "assainissement"
     title: "Assainissement"

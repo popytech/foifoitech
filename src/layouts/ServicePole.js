@@ -1,5 +1,6 @@
 import BorderBeam from "@layouts/components/BorderBeam";
 import Icon from "@layouts/components/Icon";
+import PhotoGallery from "@layouts/components/PhotoGallery";
 import Reveal from "@layouts/components/Reveal";
 import ShimmerButton from "@layouts/components/ShimmerButton";
 import Image from "next/image";
@@ -121,6 +122,13 @@ const ServicePole = ({ pole, poles = [] }) => {
           </div>
         </div>
       </section>
+
+      {/* Galerie photo du domaine (affichée seulement si des photos existent) */}
+      <PhotoGallery
+        eyebrow="Sur le terrain"
+        title="Nos interventions en images"
+        images={pole.gallery}
+      />
 
       {/* Autres domaines */}
       {others.length > 0 && (
