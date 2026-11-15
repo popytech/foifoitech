@@ -6,11 +6,11 @@ import GoogleMap from "@layouts/components/GoogleMap";
 import Reveal from "@layouts/components/Reveal";
 
 // Page 100 % statique : le sujet pré-sélectionné (?sujet=…) est lu par le
-// formulaire côté navigateur, et l'envoi passe par Web3Forms (sans serveur).
+// formulaire côté navigateur ; seul l'envoi de l'email passe par /api/contact.
 const Contact = ({ data }) => {
   const { frontmatter } = data;
   const { title, info } = frontmatter;
-  const { web3forms } = config;
+  const { contact_form_action } = config.params;
 
   return (
     <>
@@ -45,10 +45,7 @@ const Contact = ({ data }) => {
               direction="left"
               className="relative overflow-hidden rounded-2xl lg:col-span-7"
             >
-              <ContactForm
-                web3forms={web3forms}
-                contactEmail={config.params.contact_email}
-              />
+              <ContactForm action={contact_form_action} />
               <BorderBeam size={140} duration={6} borderWidth={2} />
             </Reveal>
 

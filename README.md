@@ -15,7 +15,7 @@ services techniques, Somaya-Fory, Commune de Coyah, Conakry (Guinée).
 | Framework | Next.js 16 (App Router, Turbopack) |
 | Styles | Tailwind CSS 4 |
 | Contenu | Markdown (`src/content/`) + front-matter |
-| Emails | [Web3Forms](https://web3forms.com) (appel `fetch` depuis le navigateur, sans serveur) |
+| Emails | SMTP direct via Nodemailer, depuis la boîte mail de l'entreprise |
 | Gestionnaire de paquets | pnpm |
 
 ---
@@ -37,53 +37,52 @@ pnpm lint      # ESLint
 
 ---
 
-## Variable d'environnement
+## Variables d'environnement
+
+Modèle dans [`.env.example`](.env.example). En production, elles se définissent chez
+l'hébergeur (jamais dans le code ni sur GitHub) :
 
 | Variable | Rôle | Si absente |
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | URL publique (canonical, og:url, sitemap) | URLs SEO en `localhost` |
+| `SMTP_USER` | Boîte mail qui envoie les demandes (`contact@fofoitech.com`) | Le formulaire renvoie une erreur au visiteur |
+| `SMTP_PASS` | Mot de passe de cette boîte | Idem |
+
+Facultatives (valeurs par défaut adaptées à la messagerie LWS de fofoitech.com) :
+`SMTP_HOST` (`mail.fofoitech.com`), `SMTP_PORT` (`465`), `SMTP_TLS_SERVERNAME`
+(`mail.lwspanel.com`), `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAILS`.
 
 ---
 
-## Formulaire de contact (Web3Forms)
+## Formulaire de contact (envoi par SMTP)
 
 Toutes les demandes — **contact, demande de devis, inscription à une formation**
-— passent par la page `/contact` et sont envoyées à **deux boîtes** :
-`directeur@foifoitech.com` et `contact@foifoitech.com`.
+— passent par la page `/contact`. Chaque demande est envoyée **par email, depuis la
+boîte `contact@fofoitech.com`, à `directeur@fofoitech.com` et `contact@fofoitech.com`**.
+Aucun service tiers : le site se connecte directement au serveur mail du domaine.
 
-L'envoi part directement du navigateur vers Web3Forms (pas de serveur, pas de
-variable d'environnement) : la page Contact est une page statique, présente sur
-n'importe quel hébergement.
+- La page `/contact` est statique (pré-générée) ; seule l'**envoi** passe par la route
+  serveur `src/app/api/contact/route.js` (validation, pot de miel anti-robots,
+  limitation à 5 envois / 10 min / IP). Il faut donc un hébergeur qui exécute du code
+  serveur (Vercel, Netlify…), pas un simple dossier de fichiers statiques.
+- En cliquant sur « Répondre » dans la boîte, on écrit directement au visiteur
+  (`Reply-To`).
+- Le certificat TLS du serveur LWS est émis pour `*.lwspanel.com` et non pour
+  `mail.fofoitech.com` : le site valide donc le certificat contre `mail.lwspanel.com`
+  (`SMTP_TLS_SERVERNAME`) au lieu de désactiver la vérification.
 
-Une clé d'accès Web3Forms est liée à **une seule** adresse. Il faut donc une clé
-par boîte, et le site envoie chaque demande une fois par clé :
+### Mise en route
 
-1. Aller sur [web3forms.com](https://web3forms.com) → **Create your Access Key**.
-2. Saisir `directeur@foifoitech.com` : la clé arrive dans cette boîte.
-3. Recommencer avec `contact@foifoitech.com`.
-4. Coller chaque clé dans `src/config/config.json` :
+1. Chez l'hébergeur du site, ajouter les variables **`SMTP_USER`**
+   (`contact@fofoitech.com`) et **`SMTP_PASS`** (le mot de passe de cette boîte).
+2. Redéployer le site (les variables ne sont prises en compte qu'à un nouveau déploiement).
+3. Envoyer une demande test depuis `/contact` et vérifier la réception **dans les deux
+   boîtes** (penser au dossier spam la première fois).
+4. En local : copier `.env.example` en `.env.local` et renseigner les mêmes variables.
+   Sans elles, la demande s'affiche dans la console au lieu d'être envoyée.
 
-   ```json
-   "web3forms": {
-     "endpoint": "https://api.web3forms.com/submit",
-     "recipients": [
-       { "label": "directeur@foifoitech.com", "access_key": "CLÉ-DIRECTEUR" },
-       { "label": "contact@foifoitech.com",   "access_key": "CLÉ-CONTACT" }
-     ]
-   }
-   ```
-
-   Les clés d'accès Web3Forms sont publiques par conception : elles peuvent
-   figurer dans le code du site.
-5. Pousser sur GitHub, puis envoyer une demande test depuis `/contact` et
-   vérifier la réception **dans les deux boîtes**.
-
-Tant qu'aucune clé n'est renseignée, le formulaire affiche un message invitant le
-visiteur à écrire à `contact@foifoitech.com` ou à appeler. Si une seule clé est
-renseignée, seule cette boîte reçoit les demandes.
-
-Offre gratuite Web3Forms : 250 envois par mois **et par clé**. Pas de pièce
-jointe sur l'offre gratuite.
+Si l'envoi échoue, le visiteur voit un message avec le téléphone et WhatsApp, et la
+cause exacte est écrite dans les journaux de l'hébergeur (préfixe `[contact]`).
 
 ---
 
@@ -127,7 +126,7 @@ Le script `scripts/themeGenerator.mjs` propage la valeur dans le CSS au build.
 | 5 pages (Accueil, À propos, Services, Contact, Mentions légales) | ✅ + page Équipe dédiée |
 | RCCM en pied de page sur toutes les pages | ✅ |
 | NIF en mentions légales | ✅ |
-| Formulaire de contact fonctionnel | ✅ (validation, anti-spam par pot de miel, envoi Web3Forms vers 2 boîtes) |
+| Formulaire de contact fonctionnel | ✅ (validation, anti-spam par pot de miel, limitation de débit, envoi SMTP vers 2 boîtes) |
 | Bouton WhatsApp flottant | ✅ toutes pages → `wa.me/224625573434` |
 | Carte Google Maps | ✅ embed sans clé API + lien itinéraire |
 | Responsive mobile / tablette / desktop | ✅ |
@@ -142,14 +141,14 @@ Le script `scripts/themeGenerator.mjs` propage la valeur dans le CSS au build.
 ### Vercel (recommandé)
 
 1. Importer le dépôt sur [vercel.com](https://vercel.com).
-2. Renseigner `NEXT_PUBLIC_SITE_URL` (**Settings → Environment Variables**).
+2. Renseigner `NEXT_PUBLIC_SITE_URL`, `SMTP_USER` et `SMTP_PASS` (**Settings → Environment Variables**).
 3. Déployer — build et commande de démarrage sont détectés automatiquement.
 4. Brancher le nom de domaine dans **Settings → Domains**.
 
 ### Netlify
 
 Le fichier `netlify.toml` est présent. Ajouter le plugin
-`@netlify/plugin-nextjs` et la variable d'environnement `NEXT_PUBLIC_SITE_URL`.
+`@netlify/plugin-nextjs` et les variables d'environnement `NEXT_PUBLIC_SITE_URL`, `SMTP_USER`, `SMTP_PASS`.
 
 ### Après mise en ligne
 
@@ -158,8 +157,8 @@ Le fichier `netlify.toml` est présent. Ajouter le plugin
 - [ ] Vérifier que `NEXT_PUBLIC_SITE_URL` pointe le domaine final, puis
       contrôler `/sitemap.xml` et `/robots.txt`.
 - [ ] Soumettre le sitemap dans Google Search Console.
-- [ ] Renseigner les deux clés Web3Forms (voir « Formulaire de contact »), puis
-      envoyer une demande test et confirmer la réception sur les deux adresses.
+- [ ] Renseigner `SMTP_USER` / `SMTP_PASS` chez l'hébergeur (voir « Formulaire de contact »),
+      puis envoyer une demande test et confirmer la réception sur les deux adresses.
 - [ ] Vérifier que le +224 625 57 34 34 est bien actif sur WhatsApp Business.
 
 ---

@@ -1,5 +1,4 @@
 "use client";
-import { sendToWeb3Forms } from "@lib/web3forms";
 import { useEffect, useState } from "react";
 
 const FIELD_CLASS =
@@ -22,10 +21,10 @@ const SUBJECTS = [
 
 const PHONE_HELP = "(+224) 625 57 34 34";
 
-// `web3forms` = { endpoint, recipients: [{ label, access_key }] } (config.json).
-// Le sujet pré-sélectionné (?sujet=…) est lu ici, côté navigateur, pour que la
-// page Contact reste entièrement statique (donc présente sur tout hébergement).
-export default function ContactForm({ web3forms = {}, contactEmail }) {
+// L'envoi passe par la route serveur /api/contact, qui expédie l'email par SMTP
+// depuis la boîte de l'entreprise. Le sujet pré-sélectionné (?sujet=…) est lu ici,
+// côté navigateur, pour que la page Contact reste entièrement statique.
+export default function ContactForm({ action = "/api/contact" }) {
   const [subject, setSubject] = useState("");
   const [state, setState] = useState({
     loading: false,
@@ -41,52 +40,19 @@ export default function ContactForm({ web3forms = {}, contactEmail }) {
   async function handleSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
-
-    // Pot de miel : rempli uniquement par les robots. On simule un succès
-    // sans rien envoyer, pour ne pas leur signaler la détection.
-    if (data.website) {
-      form.reset();
-      setState({ loading: false, success: true, error: null });
-      return;
-    }
-
     setState({ loading: true, success: null, error: null });
 
-    const fields = {
-      name: String(data.name || "").trim(),
-      email: String(data.email || "").trim(),
-      phone: String(data.phone || "").trim(),
-      subject: String(data.subject || "").trim() || "Demande générale",
-      message: String(data.message || "").trim(),
-    };
+    const payload = Object.fromEntries(new FormData(form).entries());
 
     try {
-      const result = await sendToWeb3Forms({
-        fields,
-        recipients: web3forms.recipients,
-        endpoint: web3forms.endpoint,
+      const res = await fetch(action, {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json" },
       });
+      const data = await res.json().catch(() => ({}));
 
-      if (!result.configured) {
-        console.warn(
-          "[contact] Aucune clé d'accès Web3Forms renseignée dans src/config/config.json (web3forms.recipients).",
-        );
-        setState({
-          loading: false,
-          success: false,
-          error: `Le formulaire n'est pas encore activé. Écrivez-nous à ${contactEmail || "notre adresse email"} ou appelez le ${PHONE_HELP}.`,
-        });
-        return;
-      }
-
-      if (result.failed.length) {
-        // La demande est arrivée dans au moins une boîte : le visiteur voit un
-        // succès, mais on garde la trace de la boîte qui n'a pas reçu l'email.
-        console.error("[contact] envoi échoué pour :", result.failed);
-      }
-
-      if (result.delivered > 0) {
+      if (res.ok && data.ok) {
         form.reset();
         setSubject("");
         setState({ loading: false, success: true, error: null });
@@ -94,7 +60,9 @@ export default function ContactForm({ web3forms = {}, contactEmail }) {
         setState({
           loading: false,
           success: false,
-          error: `L'envoi a échoué. Merci de réessayer, ou de nous joindre au ${PHONE_HELP} ou sur WhatsApp.`,
+          error:
+            data.error ||
+            `L'envoi a échoué. Merci de réessayer, ou de nous joindre au ${PHONE_HELP}.`,
         });
       }
     } catch {

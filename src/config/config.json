@@ -20,18 +20,10 @@
   },
 
   "params": {
-    "contact_email": "contact@foifoitech.com",
+    "contact_form_action": "/api/contact",
     "rccm": "GN.TCC.2025.B.11045",
     "nif": "805298676",
     "copyright": "FÖFÖÏ TECH SARLU — RCCM GN.TCC.2025.B.11045 — © 2026 Tous droits réservés"
-  },
-
-  "web3forms": {
-    "endpoint": "https://api.web3forms.com/submit",
-    "recipients": [
-      { "label": "directeur@foifoitech.com", "access_key": "" },
-      { "label": "contact@foifoitech.com", "access_key": "" }
-    ]
   },
 
   "google_tag_manager": {
