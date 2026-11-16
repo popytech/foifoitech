@@ -1,6 +1,6 @@
 ---
 title: "Nos domaines d'expertise, une seule entreprise"
-description: "FÖFÖÏ TECH propose des services en Génie Civil & Immobilier, Technologies & Informatique, Logistique & Services et Formation Professionnelle à Coyah, Conakry, Guinée."
+description: "FÖFÖÏ TECH propose des services en Génie Civil & Immobilier, Technologies & Informatique, Logistique & Services et Formation Professionnelle en Guinée."
 layout: services
 intro: "FÖFÖÏ TECH met à votre disposition une expertise technique diversifiée, organisée autour de plusieurs pôles complémentaires. Découvrez comment nous pouvons répondre à vos besoins."
 

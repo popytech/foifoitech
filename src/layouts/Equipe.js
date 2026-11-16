@@ -71,7 +71,7 @@ const Equipe = ({ data }) => {
           >
             <h3 className="text-xl font-bold text-slate-900 sm:text-2xl">Un projet sur mesure avec notre équipe ?</h3>
             <p className="mt-2 text-sm text-slate-600 sm:text-base max-w-xl mx-auto">
-              Nos ingénieurs, techniciens et spécialistes BTP & informatique sont disponibles pour étudier votre projet à Conakry et Coyah.
+              Nos ingénieurs, techniciens et spécialistes BTP & informatique sont disponibles pour étudier votre projet en Guinée.
             </p>
             <div className="mt-6">
               <a href="/contact" className="btn btn-primary px-8 py-3 text-base shadow-lg shadow-primary/20">

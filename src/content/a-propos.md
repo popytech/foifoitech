@@ -1,11 +1,11 @@
 ---
 title: "Qui sommes-nous"
-description: "FÖFÖÏ TECH SARLU, entreprise guinéenne basée à Coyah (Conakry), spécialisée en BTP, ingénierie, informatique et services techniques. RCCM GN.TCC.2025.B.11045."
+description: "FÖFÖÏ TECH SARLU, entreprise guinéenne basée en Guinée, spécialisée en BTP, ingénierie, informatique et services techniques. RCCM GN.TCC.2025.B.11045."
 layout: apropos
 
 intro:
   eyebrow: "Notre histoire"
-  lead: "FÖFÖÏ TECH SARLU est une entreprise guinéenne basée à Somaya-Fory, dans la Commune de Coyah (Conakry), opérant sous le régime OHADA."
+  lead: "FÖFÖÏ TECH SARLU est une entreprise guinéenne opérant sous le régime OHADA, au service des particuliers, des entreprises et des institutions en Guinée."
   paragraphs:
     - "Notre approche repose sur une conviction simple : un client ne devrait pas avoir à multiplier les prestataires pour faire aboutir ses projets. C'est pourquoi FÖFÖÏ TECH réunit sous une même structure des compétences techniques variées, capables de répondre à des besoins allant de la construction d'un bâtiment à la maintenance d'un parc informatique."
 
@@ -17,7 +17,7 @@ directeur:
 
 vision:
   title: "Notre Vision"
-  content: "Devenir une référence guinéenne du service multi-technique, reconnue pour la fiabilité de ses interventions et la proximité avec ses clients, à Coyah comme dans le reste de la Guinée."
+  content: "Devenir une référence guinéenne du service multi-technique, reconnue pour la fiabilité de ses interventions et la proximité avec ses clients, partout en Guinée."
 
 mission:
   title: "Notre Mission"

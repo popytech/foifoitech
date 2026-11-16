@@ -1,6 +1,6 @@
 ---
 title: "Mentions légales"
-description: "Informations légales de FÖFÖÏ TECH SARLU — RCCM GN.TCC.2025.B.11045, NIF 805298676, Coyah, Conakry, Guinée."
+description: "Informations légales de FÖFÖÏ TECH SARLU — RCCM GN.TCC.2025.B.11045, NIF 805298676, Guinée."
 layout: default
 ---
 

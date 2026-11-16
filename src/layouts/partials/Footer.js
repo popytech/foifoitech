@@ -36,7 +36,7 @@ const Footer = () => {
             </p>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
               Entreprise guinéenne spécialisée en BTP, informatique et
-              services techniques, basée à Coyah (Conakry).
+              services techniques, au service de toute la Guinée.
             </p>
           </div>
 

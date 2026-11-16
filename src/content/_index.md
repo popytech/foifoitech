@@ -3,7 +3,7 @@ banner:
   title: "Un service, mille possibilités"
   content: "FÖFÖÏ TECH accompagne particuliers et entreprises en Guinée avec des solutions fiables en BTP, informatique et services techniques — un seul interlocuteur, plusieurs domaines d'expertise."
   image: /images/hero-fofoitech.jpg
-  image_alt: "Équipe FÖFÖÏ TECH en intervention à Coyah, Conakry"
+  image_alt: "Équipe FÖFÖÏ TECH en intervention en Guinée"
   button:
     enable: true
     label: "Demander un devis"
@@ -14,7 +14,7 @@ banner:
 presentation:
   title: "Une entreprise, plusieurs domaines d'expertise"
   paragraphs:
-    - "FÖFÖÏ TECH est une entreprise guinéenne basée à Coyah, opérant sous le régime OHADA. Nous réunissons sous un même toit des compétences en construction, en ingénierie, en informatique et en services techniques, pour répondre aux besoins concrets des particuliers, des entreprises et des institutions en Guinée."
+    - "FÖFÖÏ TECH est une entreprise guinéenne opérant sous le régime OHADA. Nous réunissons sous un même toit des compétences en construction, en ingénierie, en informatique et en services techniques, pour répondre aux besoins concrets des particuliers, des entreprises et des institutions en Guinée."
     - "Que vous ayez un projet de construction, un besoin en équipement informatique, ou une prestation de services à confier, FÖFÖÏ TECH vous apporte une réponse rapide, sérieuse et conforme aux normes en vigueur."
   poles:
     - title: "Génie Civil & Immobilier"
@@ -73,7 +73,7 @@ feature:
   - name: "Équipe pluridisciplinaire"
     icon: "team"
     content: "Économistes, ingénieurs, techniciens et formateurs réunis autour de vos projets."
-  - name: "Basée à Coyah, au service de tout Conakry"
+  - name: "Basée en Guinée, au service de tout le pays"
     icon: "location"
     content: "Proximité et réactivité pour toutes vos demandes, quel que soit votre secteur."
   - name: "Un seul interlocuteur, plusieurs domaines"
@@ -83,7 +83,7 @@ feature:
     title: "Un partenaire de proximité, sérieux et réactif"
     paragraphs:
       - "Choisir FÖFÖÏ TECH, c'est confier vos projets à une entreprise guinéenne structurée, enregistrée et conforme, qui connaît le terrain. De la construction d'un bâtiment à l'installation de caméras de vidéosurveillance, de la maintenance de votre parc informatique à la formation de vos équipes, vous n'avez plus à courir entre plusieurs prestataires : un seul interlocuteur suit votre demande, du premier échange jusqu'à la réalisation."
-      - "Nos équipes interviennent à Coyah et dans tout Conakry avec la même exigence : le respect des normes en vigueur, la transparence sur ce que nous vous proposons, et une vraie réactivité face à vos besoins. Chaque projet, petit ou grand, est étudié avec sérieux."
+      - "Nos équipes interviennent partout en Guinée avec la même exigence : le respect des normes en vigueur, la transparence sur ce que nous vous proposons, et une vraie réactivité face à vos besoins. Chaque projet, petit ou grand, est étudié avec sérieux."
     button:
       label: "Demander un devis sans engagement"
       link: "/contact?sujet=Demande%20de%20devis"

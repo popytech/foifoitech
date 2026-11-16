@@ -45,7 +45,7 @@ const FAQ_ITEMS = [
   {
     question: "Les formations s'adressent-elles aux entreprises ?",
     answer:
-      "Oui. FÖFÖÏ TECH forme aussi bien des particuliers que des équipes en entreprise, à Coyah comme dans le reste de Conakry.",
+      "Oui. FÖFÖÏ TECH forme aussi bien des particuliers que des équipes en entreprise, partout en Guinée.",
   },
   {
     question: "Les débutants peuvent-ils participer ?",
