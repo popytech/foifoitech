@@ -79,6 +79,14 @@ feature:
   - name: "Un seul interlocuteur, plusieurs domaines"
     icon: "layers"
     content: "Construction, informatique, logistique — simplifiez la gestion de vos projets."
+  closing:
+    title: "Un partenaire de proximité, sérieux et réactif"
+    paragraphs:
+      - "Choisir FÖFÖÏ TECH, c'est confier vos projets à une entreprise guinéenne structurée, enregistrée et conforme, qui connaît le terrain. De la construction d'un bâtiment à l'installation de caméras de vidéosurveillance, de la maintenance de votre parc informatique à la formation de vos équipes, vous n'avez plus à courir entre plusieurs prestataires : un seul interlocuteur suit votre demande, du premier échange jusqu'à la réalisation."
+      - "Nos équipes interviennent à Coyah et dans tout Conakry avec la même exigence : le respect des normes en vigueur, la transparence sur ce que nous vous proposons, et une vraie réactivité face à vos besoins. Chaque projet, petit ou grand, est étudié avec sérieux."
+    button:
+      label: "Demander un devis sans engagement"
+      link: "/contact?sujet=Demande%20de%20devis"
 
 # services
 services:
